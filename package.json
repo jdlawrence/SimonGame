@@ -1,0 +1,29 @@
+{
+  "name": "simongame",
+  "version": "1.0.0",
+  "description": "A rendition of the classic Simon Game created in ReactJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdlawrence/SimonGame.git"
+  },
+  "keywords": [
+    "react",
+    "react-router",
+    "game"
+  ],
+  "author": "Jamil D Lawrence",
+  "email": "jamil.lawrence@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdlawrence/SimonGame/issues"
+  },
+  "homepage": "https://github.com/jdlawrence/SimonGame#readme",
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
+  }
+}
