@@ -1,12 +1,24 @@
+var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './index.js',
+  devtool: 'eval',
+
+  entry: [
+    'webpack-dev-server/client?http://localhost:5040',
+    'webpack/hot/only-dev-server',
+    './index.js'
+  ],
 
   output: {
-    path: 'public',
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/'
   },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
 
   module: {
     loaders: [{

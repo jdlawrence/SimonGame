@@ -1,20 +1,15 @@
-var express = require('express');
-var path = require('path');
-var compression = require('compression');
+var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
+var config = require('./webpack.config');
 
-var app = express();
+new WebpackDevServer(webpack(config), {
+  publicPath: config.output.publicPath,
+  hot: true,
+  historyApiFallback: true
+}).listen(5040, 'localhost', function (err, result) {
+  if (err) {
+    return console.log('888888', err);
+  }
 
-app.use(compression());
-
-// serve our static stuff like index.html
-app.use(express.static(path.join(__dirname, 'public')));
-
-// send all requests to index.html 
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-var PORT = process.env.PORT || 5040;
-app.listen(PORT, function() {
-  console.log('Server running at localhost:' + PORT);
+  console.log('Listening at http://localhost:5040/');
 });
