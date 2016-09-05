@@ -6,8 +6,8 @@ module.exports = {
 
   entry: [
     'webpack-dev-server/client?http://localhost:5040',
-    'webpack/hot/only-dev-server',
-    './index.js'
+    'webpack/hot/dev-server',
+    './container/index.js'
   ],
 
   output: {
