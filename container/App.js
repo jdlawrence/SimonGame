@@ -8,18 +8,32 @@ import Left                 from            './Left';
 import Right                from           './Right';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        counter: 8
+    };
+  }
+  increment(){
+    console.log('inside increment');
+    this.setState({counter: this.state.counter + 1});
+  }
   render () {
     return (
       
-      <p> 
+      <div> 
       Simon Game!
+        <div>{this.state.counter}</div>
       <ul role="nav">
-        <li><Link to="/left">Left</Link></li>
+        <li><Link to={`/left/${this.state.counter}`}>Left</Link></li>
         <li><Link to="/right">Right</Link></li>
       </ul>
-      {this.props.children}
-      </p>
+      {this.props.children && React.cloneElement(this.props.children, {
+              increment: this.increment.bind(this)
+            })}
+      </div>
     );
   }
 }
 
+      // {this.props.children}

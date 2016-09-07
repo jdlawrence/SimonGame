@@ -9,14 +9,20 @@ import Left                 from            './Left';
 import Right                from           './Right';
 import Footer               from          './Footer';
 
-// render(<Router>, document.getElementById('app'));
 
-render((
-  <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <Route path="/left" component={Left}/>
-      <Route path="/right" component={Right}/>
-    </Route>
-    <Route path="/footer" component={Footer}/>
-  </Router>
-), document.getElementById('app'));
+class Index extends React.Component {
+  render () {
+    return (
+      <Router history={browserHistory}>
+        <Route path="/" component={App}>
+          <Route path="/left/:counter" component={Left}/>
+          <Route path="/right" component={Right}/>
+        </Route>
+        <Route path="/footer" component={Footer}/>
+      </Router>
+    );
+  }
+}
+
+render(<Index/>, document.getElementById('app'));
+
