@@ -25,7 +25,7 @@ export default class App extends React.Component {
       Simon Game!
         <div>{this.state.counter}</div>
       <ul role="nav">
-        <li><Link to={`/left/${this.state.counter}`}>Left</Link></li>
+        <li><Link to="/left">Left</Link></li>
         <li><Link to="/right">Right</Link></li>
       </ul>
       {this.props.children && React.cloneElement(this.props.children, {

@@ -15,7 +15,7 @@ class Index extends React.Component {
     return (
       <Router history={browserHistory}>
         <Route path="/" component={App}>
-          <Route path="/left/:counter" component={Left}/>
+          <Route path="/left" component={Left}/>
           <Route path="/right" component={Right}/>
         </Route>
         <Route path="/footer" component={Footer}/>
