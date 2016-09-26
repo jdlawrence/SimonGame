@@ -12,9 +12,18 @@ export default class Left extends Component {
         <circle onClick={this.coolFunc.bind(this)} cx={50} cy={50} r={10} fill="red" />
         <path d="m10 10 l 20 20"/>
         <circle cx={30} cy={30} r={20} fill="black" />
-        <path d="M75 75 A 50 50, 0, 0, 0, 125 125
-                L125 75 Z
+        <path d="M125 50 a 50 50, 0, 0, 0, -50 50
+                l50 0 Z                 
+        " stroke="black" fill="blue"/>
+        <path d="M75 100 a 50 50, 0, 0, 0, 50 50
+                l0 -50 Z
         " stroke="black" fill="red"/>
+        <path d="M125 150 a 50 50, 0, 0, 0, 50 -50 
+                l-50 0 Z                 
+        " stroke="black" fill="green"/>
+        <path d="M175 100 a 50 50, 0, 0, 0, -50 -50 
+                l0 50 Z                 
+        " stroke="black" fill="yellow"/>
       </svg>
       Right side component</h1>
     );
