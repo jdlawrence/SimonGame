@@ -15,8 +15,10 @@ export default class App extends React.Component {
     };
   }
   increment(){
-    console.log('inside increment');
     this.setState({counter: this.state.counter + 1});
+  }
+  logColor(color) {
+    console.log('color: ', color);
   }
   render () {
     return (
@@ -29,7 +31,7 @@ export default class App extends React.Component {
         <li><Link to="/right">Right</Link></li>
       </ul>
       {this.props.children && React.cloneElement(this.props.children, {
-              increment: this.increment.bind(this)
+              increment: this.increment.bind(this), logColor: this.logColor.bind(this)
             })}
       </div>
     );
