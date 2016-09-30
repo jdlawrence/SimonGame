@@ -6,16 +6,16 @@ export default class Right extends Component {
   }
 
   clickBlue() {
-    this.props.logColor('blue');
+    this.props.pushPlays('blue');
   }
   clickGreen() {
-    console.log('green');
+    this.props.pushPlays('green');
   }
   clickRed() {
-    console.log('red');
+    this.props.pushPlays('red');
   }
   clickYellow() {
-    console.log('yellow');
+    this.props.pushPlays('yellow');
   }
   render() {
     return (

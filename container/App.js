@@ -11,14 +11,36 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        counter: 8
+        counter: 8,
+        plays: [],
+        computerPlays: [],
+        playersTurn: false
     };
+    this.generatePlays = this.generatePlays.bind(this);
+  }
+  componentDidMount() {
+    // this.generatePlays();
   }
   increment(){
     this.setState({counter: this.state.counter + 1});
   }
   logColor(color) {
     console.log('color: ', color);
+  }
+  generatePlays() {
+    var plays = ['green', 'red', 'blue', 'yellow'];
+
+    setInterval( () => {
+      var index = Math.floor(Math.random() * 4);
+      var temp = this.state.computerPlays.concat(plays[index]);
+      this.setState({computerPlays: temp}, () => {
+        console.log('computerPlays: ', this.state.computerPlays);
+      });
+    }, 500);
+  }
+  pushPlays(color) {
+    var temp = this.state.plays.concat(color);
+    this.setState({plays: temp}, () => { console.log('plays: ', this.state.plays); });
   }
   render () {
     return (
@@ -31,7 +53,9 @@ export default class App extends React.Component {
         <li><Link to="/right">Right</Link></li>
       </ul>
       {this.props.children && React.cloneElement(this.props.children, {
-              increment: this.increment.bind(this), logColor: this.logColor.bind(this)
+              increment: this.increment.bind(this), 
+              logColor: this.logColor.bind(this),
+              pushPlays: this.pushPlays.bind(this)
             })}
       </div>
     );

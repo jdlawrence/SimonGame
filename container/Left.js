@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 export default class Left extends Component {
   increment() {
-    console.log('props inside Component: ', this.props);
     this.props.increment();
   }
   render() {
