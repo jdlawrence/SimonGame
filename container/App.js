@@ -14,7 +14,8 @@ export default class App extends React.Component {
         counter: 8,
         plays: [],
         computerPlays: [],
-        playersTurn: false
+        playersTurn: false,
+        gameClock: null
     };
     this.generatePlays = this.generatePlays.bind(this);
   }
@@ -30,13 +31,22 @@ export default class App extends React.Component {
   generatePlays() {
     var plays = ['green', 'red', 'blue', 'yellow'];
 
-    setInterval( () => {
+    var gameClock = setInterval( () => {
       var index = Math.floor(Math.random() * 4);
       var temp = this.state.computerPlays.concat(plays[index]);
       this.setState({computerPlays: temp}, () => {
         console.log('computerPlays: ', this.state.computerPlays);
       });
     }, 500);
+
+    this.setState({gameClock: gameClock});
+    
+    setTimeout(function() {
+      clearInterval(gameClock);
+    }, 2000);
+  }
+  stopClock() {
+    clearInterval(this.state.gameClock);
   }
   pushPlays(color) {
     var temp = this.state.plays.concat(color);
@@ -47,7 +57,9 @@ export default class App extends React.Component {
       
       <div> 
       Simon Game!
-        <div>{this.state.counter}</div>
+      <div>{this.state.counter}</div>
+      <button onClick={this.generatePlays.bind(this)}>Start</button>
+      <button onClick={this.stopClock.bind(this)}>Stop</button>
       <ul role="nav">
         <li><Link to="/left">Left</Link></li>
         <li><Link to="/right">Right</Link></li>
