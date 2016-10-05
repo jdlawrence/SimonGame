@@ -4,18 +4,24 @@ export default class Right extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hover: {
-        green: false,
-        red: false,
-        blue: false,
-        yellow: false
-      }
+      green: 0.5,
+      red: false,
+      blue: false,
+      yellow: false
     };
-    this.toggleHover = this.toggleHover.bind(this);
+    // this.toggleHover = this.toggleHover.bind(this);
   }
   toggleHover(color) {
-    console.log('color: ', color);
-    this.setState({hover: !this.state.hover});
+    console.log('color*******************: ', color);
+    this.setState({green: 1.0});
+  }
+  toggleOn(color) {
+    console.log('color*******************: ', color);
+    this.setState({green: 1.0});
+  }
+  toggleOff(color) {
+    console.log('color*******************: ', color);
+    this.setState({green: 0.5});
   }
   clickBlue() {
     this.props.pushPlays('blue');
@@ -30,24 +36,30 @@ export default class Right extends Component {
     this.props.pushPlays('yellow');
   }
   render() {
-    var buttonStyle;
-    if (this.state.hover) {
-      buttonStyle = {
-        opacity: 0.3
-      };
-    }
-    else {
-      buttonStyle = {
-        opacity: 1.0
-      };
-    }
+    var greenStyle = {
+      opacity: this.state.green
+    };
+    var buttonStyle = {
+      opacity: 0.5
+    };
+    // if (this.state.green) {
+    //   buttonStyle = {
+    //     opacity: 1.0
+    //   };
+    // }
+    // else {
+    //   buttonStyle = {
+    //     opacity: 0.5
+    //   };
+    // }
 
     return (
       <h1>
       <svg width="200" height="200">
         <circle cx="125" cy="100" r="56" fill="black"/>
-        <path style={buttonStyle} onClick={this.clickGreen.bind(this)} 
-          onMouseEnter={this.toggleHover.bind(null, 'red')} onMouseLeave={this.toggleHover}
+        <path style={greenStyle} onClick={this.clickGreen.bind(this)} 
+          onMouseEnter={() => this.toggleOn('green')} 
+          onMouseLeave={() => this.toggleOff('green')} 
           d="M125 50 a 50 50, 0, 0, 0, -50 50
                 l50 0 Z                 
         " stroke="black" fill="green"/>
