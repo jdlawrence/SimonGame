@@ -5,23 +5,43 @@ export default class Right extends Component {
     super(props);
     this.state = {
       green: 0.5,
-      red: false,
-      blue: false,
-      yellow: false
+      red: 0.5,
+      blue: 0.5,
+      yellow: 0.5
     };
     // this.toggleHover = this.toggleHover.bind(this);
   }
-  toggleHover(color) {
-    console.log('color*******************: ', color);
-    this.setState({green: 1.0});
-  }
   toggleOn(color) {
-    console.log('color*******************: ', color);
-    this.setState({green: 1.0});
+    switch(color) {
+      case 'green':
+        this.setState({green: 1.0});
+        break;
+      case 'yellow':
+        this.setState({yellow: 1.0});
+        break;
+      case 'blue':
+        this.setState({blue: 1.0});
+        break;
+      case 'red':
+        this.setState({red: 1.0});
+        break;    
+    }
   }
   toggleOff(color) {
-    console.log('color*******************: ', color);
-    this.setState({green: 0.5});
+    switch(color) {
+      case 'green':
+        this.setState({green: 0.5});
+        break;
+      case 'yellow':
+        this.setState({yellow: 0.5});
+        break;
+      case 'blue':
+        this.setState({blue: 0.5});
+        break;
+      case 'red':
+        this.setState({red: 0.5});
+        break;    
+    }
   }
   clickBlue() {
     this.props.pushPlays('blue');
@@ -39,19 +59,16 @@ export default class Right extends Component {
     var greenStyle = {
       opacity: this.state.green
     };
-    var buttonStyle = {
-      opacity: 0.5
+    var yellowStyle = {
+      opacity: this.state.yellow
     };
-    // if (this.state.green) {
-    //   buttonStyle = {
-    //     opacity: 1.0
-    //   };
-    // }
-    // else {
-    //   buttonStyle = {
-    //     opacity: 0.5
-    //   };
-    // }
+    var blueStyle = {
+      opacity: this.state.blue
+    };
+    var redStyle = {
+      opacity: this.state.red
+    };
+  
 
     return (
       <h1>
@@ -63,21 +80,21 @@ export default class Right extends Component {
           d="M125 50 a 50 50, 0, 0, 0, -50 50
                 l50 0 Z                 
         " stroke="black" fill="green"/>
-        <path style={buttonStyle}
-        onClick={this.clickYellow.bind(this)} 
-        onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}
+        <path style={yellowStyle} onClick={this.clickYellow.bind(this)} 
+          onMouseEnter={() => this.toggleOn('yellow')} 
+          onMouseLeave={() => this.toggleOff('yellow')} 
         d="M75 100 a 50 50, 0, 0, 0, 50 50
                 l0 -50 Z
         " stroke="black" fill="yellow"/>
-        <path style={buttonStyle} 
-        onClick={this.clickBlue.bind(this)} 
-        onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}
+        <path style={blueStyle} onClick={this.clickBlue.bind(this)} 
+          onMouseEnter={() => this.toggleOn('blue')} 
+          onMouseLeave={() => this.toggleOff('blue')} 
         d="M125 150 a 50 50, 0, 0, 0, 50 -50 
                 l-50 0 Z                 
         " stroke="black" fill="blue"/>
-        <path style={buttonStyle}
-        onClick={this.clickRed.bind(this)} 
-        onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}
+        <path style={redStyle} onClick={this.clickRed.bind(this)} 
+          onMouseEnter={() => this.toggleOn('red')} 
+          onMouseLeave={() => this.toggleOff('red')} 
         d="M175 100 a 50 50, 0, 0, 0, -50 -50 
                 l0 50 Z                 
         " stroke="black" fill="red"/>
