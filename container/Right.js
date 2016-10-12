@@ -43,6 +43,16 @@ export default class Right extends Component {
         break;    
     }
   }
+  seqStart() {
+    setInterval( () => {
+      if (this.state.green === 0.5) {
+        this.setState({green: 1.0});
+      }
+      else {
+        this.setState({green: 0.5});
+      }
+    }, 500);
+  }
   clickBlue() {
     this.props.pushPlays('blue');
   }
@@ -72,6 +82,7 @@ export default class Right extends Component {
 
     return (
       <h1>
+      <button onClick={this.seqStart.bind(this)}>seqStart</button>
       <svg width="200" height="200">
         <circle cx="125" cy="100" r="56" fill="black"/>
         <path style={greenStyle} onClick={this.clickGreen.bind(this)} 

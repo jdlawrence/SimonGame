@@ -7,7 +7,7 @@ export default class Left extends Component {
   render() {
     return (
       <h1>Left side component
-        {console.log('props: ', this.props)}
+        {console.log('props************: ', this.props.counter)}
         <button onClick={this.increment.bind(this)}>Click to increment</button>
         </h1>
     );

@@ -19,8 +19,8 @@ export default class App extends React.Component {
     };
     this.generatePlays = this.generatePlays.bind(this);
   }
-  componentDidMount() {
-    // this.generatePlays();
+  timesTwo() {
+    this.setState({counter: this.state.counter * 2});
   }
   increment(){
     this.setState({counter: this.state.counter + 1});
@@ -58,6 +58,7 @@ export default class App extends React.Component {
       <div> 
       Simon Game!
       <div>{this.state.counter}</div>
+      <button onClick={this.timesTwo.bind(this)}>timesTwo</button>
       <button onClick={this.generatePlays.bind(this)}>Start</button>
       <button onClick={this.stopClock.bind(this)}>Stop</button>
       <ul role="nav">
@@ -67,7 +68,8 @@ export default class App extends React.Component {
       {this.props.children && React.cloneElement(this.props.children, {
               increment: this.increment.bind(this), 
               logColor: this.logColor.bind(this),
-              pushPlays: this.pushPlays.bind(this)
+              pushPlays: this.pushPlays.bind(this),
+              counter: this.state.counter
             })}
       </div>
     );
