@@ -44,14 +44,19 @@ export default class Right extends Component {
     }
   }
   seqStart() {
-    setInterval( () => {
-      if (this.state.green === 0.5) {
-        this.setState({green: 1.0});
-      }
-      else {
-        this.setState({green: 0.5});
-      }
-    }, 500);
+
+    for (let i = 0; i < this.props.computerPlays.length; i++) {
+      setTimeout( () => {
+        var newState = {}, oldState = {};
+        newState[this.props.computerPlays[i]] = 1.0;
+        oldState[this.props.computerPlays[i]] = 0.5;
+        this.setState(newState);
+        setTimeout( () => {
+          this.setState(oldState);
+        }, 200);
+        console.log('color: ', this.props.computerPlays[i]);
+      }, i * 500);
+    }
   }
   clickBlue() {
     this.props.pushPlays('blue');
@@ -119,3 +124,8 @@ export default class Right extends Component {
     );
   }
 }
+
+Right.propTypes = {
+  pushPlays: React.PropTypes.func,
+  computerPlays: React.PropTypes.array
+};

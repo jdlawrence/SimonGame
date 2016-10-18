@@ -13,7 +13,7 @@ export default class App extends React.Component {
     this.state = {
         counter: 8,
         plays: [],
-        computerPlays: [],
+        computerPlays: ['blue', 'red', 'green', 'yellow', 'yellow', 'green', 'red', 'blue'],
         playersTurn: false,
         gameClock: null
     };
@@ -69,7 +69,8 @@ export default class App extends React.Component {
               increment: this.increment.bind(this), 
               logColor: this.logColor.bind(this),
               pushPlays: this.pushPlays.bind(this),
-              counter: this.state.counter
+              counter: this.state.counter,
+              computerPlays: this.state.computerPlays
             })}
       </div>
     );
