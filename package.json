@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/jdlawrence/SimonGame#readme",
   "dependencies": {
+    "async": "^2.1.2",
     "babel-loader": "^6.2.5",
     "babel-preset-react": "^6.11.1",
     "path": "^0.12.7",

@@ -6,6 +6,7 @@ import { Router,
   Link }                    from      'react-router';
 import Left                 from            './Left';
 import Right                from           './Right';
+import async                from            'async';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -52,12 +53,26 @@ export default class App extends React.Component {
     var temp = this.state.plays.concat(color);
     this.setState({plays: temp}, () => { console.log('plays: ', this.state.plays); });
   }
+  startGame() {
+    function delay(callback) {
+      setTimeout( () => {
+        callback();
+      }, 1000); 
+    }
+    function printGameOver(callback) {
+      console.log('GAME OVER');
+      callback();
+    }
+
+    async.series([delay, printGameOver]);
+  }
   render () {
     return (
       
       <div> 
       Simon Game!
       <div>{this.state.counter}</div>
+      <button onClick={this.startGame.bind(this)}>Start the Game!</button>
       <button onClick={this.timesTwo.bind(this)}>timesTwo</button>
       <button onClick={this.generatePlays.bind(this)}>Start</button>
       <button onClick={this.stopClock.bind(this)}>Stop</button>
