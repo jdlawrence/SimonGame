@@ -8,6 +8,15 @@ import Left                 from            './Left';
 import Right                from           './Right';
 import async                from            'async';
 
+function comparePlays(arr1, arr2) {
+  var len = arr1.length > arr2.length ? arr2.length : arr1.length; 
+  for (var i = 0; i < len; i++) {
+    if (arr1[i] !== arr2[i]) {
+      return false
+    }
+  }
+  return true;
+}
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,9 +25,21 @@ export default class App extends React.Component {
         plays: [],
         computerPlays: ['blue', 'red', 'green', 'yellow', 'yellow', 'green', 'red', 'blue'],
         playersTurn: false,
-        gameClock: null
+        gameClock: null,
+        youLose: false
     };
     this.generatePlays = this.generatePlays.bind(this);
+    this.comparePlays = this.comparePlays.bind(this);
+  }
+
+  comparePlays(arr1, arr2) {
+    var len = arr1.length > arr2.length ? arr2.length : arr1.length; 
+    for (var i = 0; i < len; i++) {
+      if (arr1[i] !== arr2[i]) {
+        return false
+      }
+    }
+    return true;
   }
   timesTwo() {
     this.setState({counter: this.state.counter * 2});
@@ -51,11 +72,22 @@ export default class App extends React.Component {
   }
   pushPlays(color) {
     var temp = this.state.plays.concat(color);
-    this.setState({plays: temp}, () => { console.log('plays: ', this.state.plays); });
+    this.setState({plays: temp}, () => { 
+      console.log('plays: ', this.state.plays); 
+      console.log('computerPlays: ', this.state.computerPlays); 
+
+      // If the player plays don't match the computer plays, trigger youLose to true
+      if (!this.comparePlays(this.state.computerPlays, this.state.plays)) {
+        this.setState({youLose: true});
+      }
+      console.log('comparePlays: ', this.comparePlays(this.state.computerPlays, this.state.plays));
+    });
   }
   startGame() {
+    var that = this;
     function delay(callback) {
       setTimeout( () => {
+        that.setState({youLose: true});
         callback();
       }, 1000); 
     }
@@ -73,6 +105,7 @@ export default class App extends React.Component {
       Simon Game!
       <div>{this.state.counter}</div>
       <button onClick={this.startGame.bind(this)}>Start the Game!</button>
+      { this.state.youLose ? <div>YOU LOSE</div> : null }
       <button onClick={this.timesTwo.bind(this)}>timesTwo</button>
       <button onClick={this.generatePlays.bind(this)}>Start</button>
       <button onClick={this.stopClock.bind(this)}>Stop</button>
@@ -85,7 +118,7 @@ export default class App extends React.Component {
               logColor: this.logColor.bind(this),
               pushPlays: this.pushPlays.bind(this),
               counter: this.state.counter,
-              computerPlays: this.state.computerPlays
+              computerPlays: this.state.computerPlays,
             })}
       </div>
     );
