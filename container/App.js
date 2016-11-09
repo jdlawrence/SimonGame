@@ -23,10 +23,11 @@ export default class App extends React.Component {
     this.state = {
         counter: 8,
         plays: [],
-        computerPlays: ['blue', 'red', 'green', 'yellow', 'yellow', 'green', 'red', 'blue'],
+        computerPlays: ['blue', 'red', 'green'],
         playersTurn: false,
         gameClock: null,
-        youLose: false
+        youLose: false,
+        youWin: false
     };
     this.generatePlays = this.generatePlays.bind(this);
     this.comparePlays = this.comparePlays.bind(this);
@@ -34,9 +35,12 @@ export default class App extends React.Component {
 
   comparePlays(arr1, arr2) {
     var len = arr1.length > arr2.length ? arr2.length : arr1.length; 
+    if (arr1.length === 0 || arr2.length === 0) {
+      return false;
+    }
     for (var i = 0; i < len; i++) {
       if (arr1[i] !== arr2[i]) {
-        return false
+        return false;
       }
     }
     return true;
@@ -85,11 +89,24 @@ export default class App extends React.Component {
   }
   startGame() {
     var that = this;
+
+    // Resets the game to a neutral state
+    that.setState({
+      youLose: false, 
+      youWin: false,
+      plays: []
+    });
+
     function delay(callback) {
       setTimeout( () => {
-        that.setState({youLose: true});
+        if (!that.comparePlays(that.state.computerPlays, that.state.plays)) {
+          that.setState({youLose: true});
+        }
+        else {
+          that.setState({youWin: true});
+        }
         callback();
-      }, 1000); 
+      }, 7000); 
     }
     function printGameOver(callback) {
       console.log('GAME OVER');
@@ -106,6 +123,7 @@ export default class App extends React.Component {
       <div>{this.state.counter}</div>
       <button onClick={this.startGame.bind(this)}>Start the Game!</button>
       { this.state.youLose ? <div>YOU LOSE</div> : null }
+      { this.state.youWin ? <div>YOU WIN</div> : null }
       <button onClick={this.timesTwo.bind(this)}>timesTwo</button>
       <button onClick={this.generatePlays.bind(this)}>Start</button>
       <button onClick={this.stopClock.bind(this)}>Stop</button>
