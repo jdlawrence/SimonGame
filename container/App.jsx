@@ -23,7 +23,7 @@ export default class App extends React.Component {
     this.state = {
         counter: 8,
         plays: [],
-        computerPlays: ['blue', 'red', 'green'],
+        computerPlays: ['blue', 'red', 'green', 'green'],
         playersTurn: false,
         gameClock: null,
         youLose: false,
