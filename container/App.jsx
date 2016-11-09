@@ -4,19 +4,10 @@ import { Router,
   browserHistory, 
   IndexRoute,
   Link }                    from      'react-router';
-import Left                 from            './Left';
-import Right                from           './Right';
+import Left                 from            './Left.jsx';
+import Right                from           './Right.jsx';
 import async                from            'async';
 
-function comparePlays(arr1, arr2) {
-  var len = arr1.length > arr2.length ? arr2.length : arr1.length; 
-  for (var i = 0; i < len; i++) {
-    if (arr1[i] !== arr2[i]) {
-      return false
-    }
-  }
-  return true;
-}
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -32,14 +23,13 @@ export default class App extends React.Component {
     this.generatePlays = this.generatePlays.bind(this);
     this.comparePlays = this.comparePlays.bind(this);
   }
-
-  comparePlays(arr1, arr2) {
-    var len = arr1.length > arr2.length ? arr2.length : arr1.length; 
-    if (arr1.length === 0 || arr2.length === 0) {
+  // 
+  comparePlays(compPlays, humanPlays) {
+    if (compPlays.length === 0 || humanPlays .length === 0) {
       return false;
     }
-    for (var i = 0; i < len; i++) {
-      if (arr1[i] !== arr2[i]) {
+    for (var i = 0; i < humanPlays.length; i++) {
+      if (compPlays[i] !== humanPlays[i]) {
         return false;
       }
     }
@@ -99,14 +89,19 @@ export default class App extends React.Component {
 
     function delay(callback) {
       setTimeout( () => {
-        if (!that.comparePlays(that.state.computerPlays, that.state.plays)) {
+        if (!that.comparePlays(that.state.computerPlays, that.state.plays)  
+          ) {
           that.setState({youLose: true});
         }
-        else {
+          
+        else if (that.state.plays.length >= that.state.computerPlays.length) {
           that.setState({youWin: true});
         }
+        else {
+          that.setState({youLose: true}); 
+        }
         callback();
-      }, 7000); 
+      }, 4000); 
     }
     function printGameOver(callback) {
       console.log('GAME OVER');

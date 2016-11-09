@@ -1,13 +1,13 @@
 import React                from             'react';
 import {render}             from         'react-dom';
-import App                  from             './App';
+import App                  from             './App.jsx';
 import { Router, 
   Route, 
   browserHistory, 
   IndexRoute }              from      'react-router';
-import Left                 from            './Left';
-import Right                from           './Right';
-import Footer               from          './Footer';
+import Left                 from            './Left.jsx';
+import Right                from           './Right.jsx';
+import Footer               from          './Footer.jsx';
 
 
 class Index extends React.Component {
