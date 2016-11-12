@@ -14,7 +14,8 @@ export default class App extends React.Component {
     this.state = {
         counter: 8,
         plays: [],
-        computerPlays: ['blue', 'red', 'green', 'green'],
+        // computerPlays: ['blue', 'red', 'green', 'green'],
+        computerPlays: [],
         playersTurn: false,
         gameClock: null,
         youLose: false,
@@ -68,10 +69,10 @@ export default class App extends React.Component {
     var temp = this.state.plays.concat(color);
     this.setState({plays: temp}, () => { 
       console.log('plays: ', this.state.plays); 
-      console.log('computerPlays: ', this.state.computerPlays); 
 
       // If the player plays don't match the computer plays, trigger youLose to true
       if (!this.comparePlays(this.state.computerPlays, this.state.plays)) {
+        this.setState({youWin: false});
         this.setState({youLose: true});
       }
       console.log('comparePlays: ', this.comparePlays(this.state.computerPlays, this.state.plays));
@@ -84,31 +85,42 @@ export default class App extends React.Component {
     that.setState({
       youLose: false, 
       youWin: false,
+      computerPlays: [],
       plays: []
+    }, function() {
+      delay( () => {});
     });
 
     function delay(callback) {
+      // Push a random play to computerPlays
+      var plays = ['green', 'red', 'blue', 'yellow'];
+      var temp = that.state.computerPlays.concat(plays[Math.floor(Math.random() * 4)]);
+      console.log('computerPlays: ', temp);
+      that.setState({computerPlays: temp});
       setTimeout( () => {
         if (!that.comparePlays(that.state.computerPlays, that.state.plays)  
           ) {
+          that.setState({youWin: false}); 
           that.setState({youLose: true});
         }
           
         else if (that.state.plays.length >= that.state.computerPlays.length) {
-          that.setState({youWin: true});
+          that.setState({plays: []});
+          delay( () => {});
         }
         else {
+          that.setState({youWin: false}); 
           that.setState({youLose: true}); 
         }
         callback();
-      }, 4000); 
+      }, 7000); 
     }
     function printGameOver(callback) {
       console.log('GAME OVER');
       callback();
     }
-
-    async.series([delay, printGameOver]);
+    // delay( () => {});
+    // async.series([delay, printGameOver]);
   }
   render () {
     return (
