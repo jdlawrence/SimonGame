@@ -14,14 +14,13 @@ export default class App extends React.Component {
     this.state = {
         counter: 8,
         plays: [],
-        // computerPlays: ['blue', 'red', 'green', 'green'],
-        computerPlays: [],
+        computerPlays: ['blue', 'blue', 'green', 'red', 'yellow'],
         playersTurn: false,
         gameClock: null,
         youLose: false,
-        youWin: false
+        youWin: false,
+        sequence: false
     };
-    this.generatePlays = this.generatePlays.bind(this);
     this.comparePlays = this.comparePlays.bind(this);
   }
   // 
@@ -44,23 +43,6 @@ export default class App extends React.Component {
   }
   logColor(color) {
     console.log('color: ', color);
-  }
-  generatePlays() {
-    var plays = ['green', 'red', 'blue', 'yellow'];
-
-    var gameClock = setInterval( () => {
-      var index = Math.floor(Math.random() * 4);
-      var temp = this.state.computerPlays.concat(plays[index]);
-      this.setState({computerPlays: temp}, () => {
-        console.log('computerPlays: ', this.state.computerPlays);
-      });
-    }, 500);
-
-    this.setState({gameClock: gameClock});
-    
-    setTimeout(function() {
-      clearInterval(gameClock);
-    }, 2000);
   }
   stopClock() {
     clearInterval(this.state.gameClock);
@@ -85,7 +67,7 @@ export default class App extends React.Component {
     that.setState({
       youLose: false, 
       youWin: false,
-      computerPlays: [],
+      // computerPlays: [],
       plays: []
     }, function() {
       delay( () => {});
@@ -98,8 +80,8 @@ export default class App extends React.Component {
       console.log('computerPlays: ', temp);
       that.setState({computerPlays: temp});
       setTimeout( () => {
-        if (!that.comparePlays(that.state.computerPlays, that.state.plays)  
-          ) {
+        that.setState({sequence:true});
+        if (!that.comparePlays(that.state.computerPlays, that.state.plays)) {
           that.setState({youWin: false}); 
           that.setState({youLose: true});
         }
@@ -113,7 +95,7 @@ export default class App extends React.Component {
           that.setState({youLose: true}); 
         }
         callback();
-      }, 7000); 
+      }, 1000); 
     }
     function printGameOver(callback) {
       console.log('GAME OVER');
@@ -132,7 +114,6 @@ export default class App extends React.Component {
       { this.state.youLose ? <div>YOU LOSE</div> : null }
       { this.state.youWin ? <div>YOU WIN</div> : null }
       <button onClick={this.timesTwo.bind(this)}>timesTwo</button>
-      <button onClick={this.generatePlays.bind(this)}>Start</button>
       <button onClick={this.stopClock.bind(this)}>Stop</button>
       <ul role="nav">
         <li><Link to="/left">Left</Link></li>
@@ -144,10 +125,12 @@ export default class App extends React.Component {
               pushPlays: this.pushPlays.bind(this),
               counter: this.state.counter,
               computerPlays: this.state.computerPlays,
+              // ref:'child'
+              seq: this.state.sequence
             })}
       </div>
     );
   }
 }
 
-      // {this.props.children}
+      // <button onClick={this.refs.child.seqStart()}>Sequence</button>
