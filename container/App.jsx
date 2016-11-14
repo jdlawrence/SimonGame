@@ -12,14 +12,13 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        counter: 8,
         plays: [],
-        computerPlays: ['blue', 'blue', 'green', 'red', 'yellow'],
+        // computerPlays: ['blue', 'blue', 'green', 'red', 'yellow'],
+        computerPlays: [],
         playersTurn: false,
         gameClock: null,
         youLose: false,
         youWin: false,
-        sequence: false
     };
     this.comparePlays = this.comparePlays.bind(this);
   }
@@ -35,18 +34,7 @@ export default class App extends React.Component {
     }
     return true;
   }
-  timesTwo() {
-    this.setState({counter: this.state.counter * 2});
-  }
-  increment(){
-    this.setState({counter: this.state.counter + 1});
-  }
-  logColor(color) {
-    console.log('color: ', color);
-  }
-  stopClock() {
-    clearInterval(this.state.gameClock);
-  }
+  
   pushPlays(color) {
     var temp = this.state.plays.concat(color);
     this.setState({plays: temp}, () => { 
@@ -67,7 +55,7 @@ export default class App extends React.Component {
     that.setState({
       youLose: false, 
       youWin: false,
-      // computerPlays: [],
+      computerPlays: [],
       plays: []
     }, function() {
       delay( () => {});
@@ -78,9 +66,10 @@ export default class App extends React.Component {
       var plays = ['green', 'red', 'blue', 'yellow'];
       var temp = that.state.computerPlays.concat(plays[Math.floor(Math.random() * 4)]);
       console.log('computerPlays: ', temp);
-      that.setState({computerPlays: temp});
+      that.setState({computerPlays: temp}, () => {
+        console.log('refs: ', that.refs.child.seqStart());
+      });
       setTimeout( () => {
-        that.setState({sequence:true});
         if (!that.comparePlays(that.state.computerPlays, that.state.plays)) {
           that.setState({youWin: false}); 
           that.setState({youLose: true});
@@ -95,37 +84,25 @@ export default class App extends React.Component {
           that.setState({youLose: true}); 
         }
         callback();
-      }, 1000); 
+      }, 5000); 
     }
-    function printGameOver(callback) {
-      console.log('GAME OVER');
-      callback();
-    }
-    // delay( () => {});
-    // async.series([delay, printGameOver]);
   }
   render () {
     return (
       
       <div> 
       Simon Game!
-      <div>{this.state.counter}</div>
       <button onClick={this.startGame.bind(this)}>Start the Game!</button>
       { this.state.youLose ? <div>YOU LOSE</div> : null }
       { this.state.youWin ? <div>YOU WIN</div> : null }
-      <button onClick={this.timesTwo.bind(this)}>timesTwo</button>
-      <button onClick={this.stopClock.bind(this)}>Stop</button>
       <ul role="nav">
         <li><Link to="/left">Left</Link></li>
         <li><Link to="/right">Right</Link></li>
       </ul>
       {this.props.children && React.cloneElement(this.props.children, {
-              increment: this.increment.bind(this), 
-              logColor: this.logColor.bind(this),
               pushPlays: this.pushPlays.bind(this),
-              counter: this.state.counter,
               computerPlays: this.state.computerPlays,
-              // ref:'child'
+              ref:'child',
               seq: this.state.sequence
             })}
       </div>

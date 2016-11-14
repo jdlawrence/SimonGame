@@ -8,7 +8,6 @@ export default class Right extends Component {
       red: 0.5,
       blue: 0.5,
       yellow: 0.5,
-      sequencePlayed: false
     };
     // console.log('Right Props: ', props);
     // this.toggleHover = this.toggleHover.bind(this);
@@ -86,12 +85,6 @@ export default class Right extends Component {
       opacity: this.state.red
     };
   
-    console.log('hiIIIIIIIIIIIIIIIIII: ', this.props);
-    if (this.props.seq & !this.state.sequencePlayed) {
-      console.log('yyesssss');
-      this.seqStart();
-      this.setState({sequencePlayed: true });
-    }
     return (
       <h1>
       <button onClick={this.seqStart.bind(this)}>seqStart</button>
