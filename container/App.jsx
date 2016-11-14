@@ -13,7 +13,6 @@ export default class App extends React.Component {
     super(props);
     this.state = {
         plays: [],
-        // computerPlays: ['blue', 'blue', 'green', 'red', 'yellow'],
         computerPlays: [],
         playersTurn: false,
         gameClock: null,
@@ -22,7 +21,6 @@ export default class App extends React.Component {
     };
     this.comparePlays = this.comparePlays.bind(this);
   }
-  // 
   comparePlays(compPlays, humanPlays) {
     if (compPlays.length === 0 || humanPlays .length === 0) {
       return false;
@@ -58,33 +56,37 @@ export default class App extends React.Component {
       computerPlays: [],
       plays: []
     }, function() {
-      delay( () => {});
+      gameAction(0);
     });
 
-    function delay(callback) {
+    // 
+    function gameAction(count) {
       // Push a random play to computerPlays
       var plays = ['green', 'red', 'blue', 'yellow'];
       var temp = that.state.computerPlays.concat(plays[Math.floor(Math.random() * 4)]);
       console.log('computerPlays: ', temp);
       that.setState({computerPlays: temp}, () => {
-        console.log('refs: ', that.refs.child.seqStart());
+        that.refs.child.seqStart();
       });
       setTimeout( () => {
+        // If you plays don't match computer plays, you lose
         if (!that.comparePlays(that.state.computerPlays, that.state.plays)) {
           that.setState({youWin: false}); 
           that.setState({youLose: true});
         }
-          
+        
+        // If plays do match computer plays, start a new round  
         else if (that.state.plays.length >= that.state.computerPlays.length) {
           that.setState({plays: []});
-          delay( () => {});
+          gameAction(count + 1);
         }
+
+        // If you don't push any plays, the game will end
         else {
           that.setState({youWin: false}); 
           that.setState({youLose: true}); 
         }
-        callback();
-      }, 5000); 
+      }, 3000 + 1000 * count); 
     }
   }
   render () {
@@ -110,4 +112,3 @@ export default class App extends React.Component {
   }
 }
 
-      // <button onClick={this.refs.child.seqStart()}>Sequence</button>

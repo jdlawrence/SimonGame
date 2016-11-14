@@ -9,8 +9,6 @@ export default class Right extends Component {
       blue: 0.5,
       yellow: 0.5,
     };
-    // console.log('Right Props: ', props);
-    // this.toggleHover = this.toggleHover.bind(this);
   }
   toggleOn(color) {
     switch(color) {
@@ -45,7 +43,6 @@ export default class Right extends Component {
     }
   }
   seqStart() {
-    console.log('this.props.computerPlays.length : ', this.props.computerPlays.length);
     for (let i = 0; i < this.props.computerPlays.length; i++) {
       setTimeout( () => {
         var newState = {}, oldState = {};
@@ -54,8 +51,7 @@ export default class Right extends Component {
         this.setState(newState);
         setTimeout( () => {
           this.setState(oldState);
-        }, 200);
-        console.log('color: ', this.props.computerPlays[i]);
+        }, 300);
       }, i * 500);
     }
   }
