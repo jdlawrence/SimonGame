@@ -1,4 +1,6 @@
 import React                from             'react';
+import ReactDOM             from         'react-dom';
+
 import { Router, 
   Route, 
   browserHistory, 
@@ -58,6 +60,8 @@ export default class App extends React.Component {
     }, function() {
       gameAction(0);
     });
+
+    ReactDOM.findDOMNode(this.refs.child).focus();
 
     // 
     function gameAction(count) {
