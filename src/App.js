@@ -17,7 +17,6 @@ export default class App extends React.Component {
         plays: [],
         computerPlays: [],
         playersTurn: false,
-        gameClock: null,
         youLose: false,
         youWin: false,
     };
