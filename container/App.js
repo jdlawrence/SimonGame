@@ -6,8 +6,8 @@ import { Router,
   browserHistory, 
   IndexRoute,
   Link }                    from      'react-router';
-import Left                 from            './Left.jsx';
-import Right                from           './Right.jsx';
+import Left                 from            './Left';
+import Right                from           './Right';
 import async                from            'async';
 
 export default class App extends React.Component {

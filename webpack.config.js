@@ -7,7 +7,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:5040',
     'webpack/hot/dev-server',
-    './container/index.jsx'
+    './container/index.js'
   ],
 
   output: {
@@ -22,7 +22,7 @@ module.exports = {
 
   module: {
     loaders: [{
-      test: /\.jsx$/,
+      test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
     }]
