@@ -8,7 +8,6 @@ import { Router,
   Link }                    from      'react-router';
 import Left                 from            './Left';
 import Right                from           './Right';
-import async                from            'async';
 
 export default class App extends React.Component {
   constructor(props) {
