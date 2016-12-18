@@ -29,5 +29,7 @@ class Index extends React.Component {
   }
 }
 
-render(<Index/>, document.getElementById('app'));
+render(<Provider store={store}>
+         <Index/>
+       </Provider>, document.getElementById('app'));
 

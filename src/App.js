@@ -1,13 +1,14 @@
-import React                from             'react';
-import ReactDOM             from         'react-dom';
+import React                from                   'react';
+import ReactDOM             from               'react-dom';
 
 import { Router, 
   Route, 
   browserHistory, 
   IndexRoute,
-  Link }                    from      'react-router';
-import Left                 from            './Left';
-import Right                from           './Right';
+  Link }                    from             'react-router';
+import Left                 from                   './Left';
+import Right                from                  './Right';
+import Board                from    './containers/board.js';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -95,20 +96,21 @@ export default class App extends React.Component {
     return (
       
       <div> 
-      Simon Game!
-      <button onClick={this.startGame.bind(this)}>Start the Game!</button>
-      { this.state.youLose ? <div>YOU LOSE</div> : null }
-      { this.state.youWin ? <div>YOU WIN</div> : null }
-      <ul role="nav">
-        <li><Link to="/left">Left</Link></li>
-        <li><Link to="/right">Right</Link></li>
-      </ul>
-      {this.props.children && React.cloneElement(this.props.children, {
-              pushPlays: this.pushPlays.bind(this),
-              computerPlays: this.state.computerPlays,
-              ref:'child',
-              seq: this.state.sequence
-            })}
+        Simon Game!
+        <Board />
+        <button onClick={this.startGame.bind(this)}>Start the Game!</button>
+        { this.state.youLose ? <div>YOU LOSE</div> : null }
+        { this.state.youWin ? <div>YOU WIN</div> : null }
+        <ul role="nav">
+          <li><Link to="/left">Left</Link></li>
+          <li><Link to="/right">Right</Link></li>
+        </ul>
+        {this.props.children && React.cloneElement(this.props.children, {
+                pushPlays: this.pushPlays.bind(this),
+                computerPlays: this.state.computerPlays,
+                ref:'child',
+                seq: this.state.sequence
+              })}
       </div>
     );
   }

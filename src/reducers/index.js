@@ -3,8 +3,12 @@ const gameState = (state = {
   computerPlays: [],
   playersTurn: false,
   youLose: false,
-  youWin: false
+  youWin: false,
+  garbage: true
 }, action) => {
+  if (action.type === 'PUSH_PLAY') {
+    console.log('push plays**********');
+  }
   
 };
 
