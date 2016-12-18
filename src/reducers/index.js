@@ -7,3 +7,5 @@ const gameState = (state = {
 }, action) => {
   
 };
+
+export default gameState;
