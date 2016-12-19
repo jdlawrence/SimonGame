@@ -2,9 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { pushPlay } from '../actions';
 
-let Board = ( {onClick} ) => {
+let Board = ( {clickBlue, clickGreen, clickYellow, clickRed} ) => {
   return (
-    <div onClick={onClick}>hi Guy</div>
+    <div>
+      <div onClick={clickBlue}>Blue</div>
+      <div onClick={clickGreen}>Green</div>
+      <div onClick={clickYellow}>Yellow</div>
+      <div onClick={clickRed}>Red</div>
+    </div>
     );
 };
 
@@ -13,8 +18,17 @@ const mapStateToProps = () => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onClick: () => {
-    dispatch(pushPlay('blue'));
+  clickBlue: () => {
+    dispatch(pushPlay('blue')); 
+  },
+  clickGreen: () => {
+    dispatch(pushPlay('green')); 
+  },
+  clickYellow: () => {
+    dispatch(pushPlay('yellow')); 
+  },
+  clickRed: () => {
+    dispatch(pushPlay('red')); 
   }
 });
 
