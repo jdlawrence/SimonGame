@@ -1,11 +1,28 @@
+const comparePlays = function(compPlays, humanPlays) {
+  if (compPlays.length === 0 || humanPlays .length === 0) {
+    return false;
+  }
+  for (var i = 0; i < humanPlays.length; i++) {
+    if (compPlays[i] !== humanPlays[i]) {
+      return false;
+    }
+  }
+  return true;
+}
 
-
-export default gameState;
-
+const gameState = (state = {
+  plays: [],
+  computerPlays: [],
+  playersTurn: false,
+  youLose: false,
+  youWin: false,
+  garbage: true
+}, action) => {
   if (action.type === 'PUSH_PLAY') {
     console.log('push plays**********', action.color);
     return {
       plays: [...state.plays, action.color],
+      // plays: [1, 2, 3, 4],
       computerPlays: state.computerPlays,
       playersTurn: state.playersTurn,
       youLose: state.youLose,
@@ -18,58 +35,3 @@ export default gameState;
 
 export default gameState;
 
-// import {
-//   ADD_TO_CART,
-//   CHECKOUT_REQUEST,
-//   CHECKOUT_FAILURE
-// } from '../constants/ActionTypes'
-
-// const initialState = {
-//   addedIds: [],
-//   quantityById: {}
-// }
-
-// const addedIds = (state = initialState.addedIds, action) => {
-//   switch (action.type) {
-//     case ADD_TO_CART:
-//       if (state.indexOf(action.productId) !== -1) {
-//         return state
-//       }
-//       return [ ...state, action.productId ]
-//     default:
-//       return state
-//   }
-// }
-
-// const quantityById = (state = initialState.quantityById, action) => {
-//   switch (action.type) {
-//     case ADD_TO_CART:
-//       const { productId } = action
-//       return { ...state,
-//         [productId]: (state[productId] || 0) + 1
-//       }
-//     default:
-//       return state
-//   }
-// }
-
-// export const getQuantity = (state, productId) =>
-//   state.quantityById[productId] || 0
-
-// export const getAddedIds = state => state.addedIds
-
-// const cart = (state = initialState, action) => {
-//   switch (action.type) {
-//     case CHECKOUT_REQUEST:
-//       return initialState
-//     case CHECKOUT_FAILURE:
-//       return action.cart
-//     default:
-//       return {
-//         addedIds: addedIds(state.addedIds, action),
-//         quantityById: quantityById(state.quantityById, action)
-//       }
-//   }
-// }
-
-// export default cart

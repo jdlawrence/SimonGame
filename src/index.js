@@ -13,7 +13,6 @@ import Right                from           './Right.js';
 import Footer               from          './Footer.js';
 
 console.log('store****************:', gameState);
-const store = createStore(gameState);
 
 // const store = createStore(gameState);
 const store = createStore(gameState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
