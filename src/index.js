@@ -1,14 +1,19 @@
-import React                from             'react';
-import {render}             from         'react-dom';
-import App                  from             './App.js';
+import {render}             from            'react-dom';
+import React                from                'react';
+import { createStore }      from                'redux';
+import { Provider }         from          'react-redux';
+import gameState            from           './reducers';
 import { Router, 
   Route, 
   browserHistory, 
-  IndexRoute }              from      'react-router';
+  IndexRoute }              from         'react-router';
+import App                  from             './App.js';
 import Left                 from            './Left.js';
 import Right                from           './Right.js';
 import Footer               from          './Footer.js';
 
+console.log('store****************:', gameState);
+const store = createStore(gameState);
 
 class Index extends React.Component {
   render () {
@@ -24,5 +29,8 @@ class Index extends React.Component {
   }
 }
 
-render(<Index/>, document.getElementById('app'));
+render(<Provider store={store}>
+         <Index/>
+       </Provider>, 
+       document.getElementById('app'));
 

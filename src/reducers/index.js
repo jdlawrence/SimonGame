@@ -5,5 +5,7 @@ const gameState = (state = {
   youLose: false,
   youWin: false
 }, action) => {
-  
+
 };
+
+export default gameState;
