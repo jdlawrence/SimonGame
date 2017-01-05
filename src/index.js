@@ -1,5 +1,5 @@
-import {render}             from            'react-dom';
 import React                from                'react';
+import {render}             from            'react-dom';
 import { createStore }      from                'redux';
 import { Provider }         from          'react-redux';
 import gameState            from           './reducers';
@@ -14,6 +14,9 @@ import Footer               from          './Footer.js';
 
 console.log('store****************:', gameState);
 const store = createStore(gameState);
+
+// const store = createStore(gameState);
+const store = createStore(gameState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 class Index extends React.Component {
   render () {
@@ -33,4 +36,3 @@ render(<Provider store={store}>
          <Index/>
        </Provider>, 
        document.getElementById('app'));
-
