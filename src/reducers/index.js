@@ -8,27 +8,27 @@ const comparePlays = function(compPlays, humanPlays) {
     }
   }
   return true;
-}
+};
 
 const gameState = (state = {
   plays: [],
-  computerPlays: [],
+  computerPlays: ['yellow', 'blue'],
   playersTurn: false,
   youLose: false,
-  youWin: false,
   garbage: true
 }, action) => {
   if (action.type === 'PUSH_PLAY') {
-    console.log('push plays**********', action.color);
-    return {
+    var result = {
       plays: [...state.plays, action.color],
-      // plays: [1, 2, 3, 4],
       computerPlays: state.computerPlays,
       playersTurn: state.playersTurn,
       youLose: state.youLose,
-      youWin: state.youWin,
       garbage: state.garbage
     };
+    console.log('push plays**********', action.color);
+    console.log('comp: ', result.computerPlays, 'plays', result.plays);
+    console.log('compare: ', comparePlays(result.computerPlays, result.plays));
+    return result; 
   }
   
 };

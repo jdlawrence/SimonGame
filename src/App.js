@@ -18,7 +18,6 @@ export default class App extends React.Component {
         computerPlays: [],
         playersTurn: false,
         youLose: false,
-        youWin: false,
     };
     this.comparePlays = this.comparePlays.bind(this);
   }
@@ -41,7 +40,6 @@ export default class App extends React.Component {
 
       // If the player plays don't match the computer plays, trigger youLose to true
       if (!this.comparePlays(this.state.computerPlays, this.state.plays)) {
-        this.setState({youWin: false});
         this.setState({youLose: true});
       }
       console.log('comparePlays: ', this.comparePlays(this.state.computerPlays, this.state.plays));
@@ -53,7 +51,6 @@ export default class App extends React.Component {
     // Resets the game to a neutral state
     that.setState({
       youLose: false, 
-      youWin: false,
       computerPlays: [],
       plays: []
     }, function() {
@@ -74,7 +71,6 @@ export default class App extends React.Component {
       setTimeout( () => {
         // If you plays don't match computer plays, you lose
         if (!that.comparePlays(that.state.computerPlays, that.state.plays)) {
-          that.setState({youWin: false}); 
           that.setState({youLose: true});
         }
         
@@ -86,7 +82,6 @@ export default class App extends React.Component {
 
         // If you don't push any plays, the game will end
         else {
-          that.setState({youWin: false}); 
           that.setState({youLose: true}); 
         }
       }, 3000 + 1000 * count); 
@@ -100,7 +95,6 @@ export default class App extends React.Component {
         <Board />
         <button onClick={this.startGame.bind(this)}>Start the Game!</button>
         { this.state.youLose ? <div>YOU LOSE</div> : null }
-        { this.state.youWin ? <div>YOU WIN</div> : null }
         <ul role="nav">
           <li><Link to="/left">Left</Link></li>
           <li><Link to="/right">Right</Link></li>
