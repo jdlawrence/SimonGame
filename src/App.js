@@ -16,7 +16,6 @@ export default class App extends React.Component {
     this.state = {
         plays: [],
         computerPlays: [],
-        playersTurn: false,
         youLose: false,
     };
     this.comparePlays = this.comparePlays.bind(this);
@@ -36,7 +35,6 @@ export default class App extends React.Component {
   pushPlays(color) {
     var temp = this.state.plays.concat(color);
     this.setState({plays: temp}, () => { 
-      console.log('plays: ', this.state.plays); 
 
       // If the player plays don't match the computer plays, trigger youLose to true
       if (!this.comparePlays(this.state.computerPlays, this.state.plays)) {
