@@ -19,25 +19,15 @@ const gameState = (state = {
   youLose: false,
 }, action) => {
   if (action.type === 'PUSH_PLAY') {
-    var result = {
-      plays: [...state.plays, action.color],
-      computerPlays: state.computerPlays,
-      youLose: state.youLose,
-    };
-    console.log('push plays**********', action.color);
-    console.log('comp: ', result.computerPlays, 'plays', result.plays);
-    console.log('compare: ', comparePlays(result.computerPlays, result.plays));
-    if (comparePlays(result.computerPlays, result.plays)) {
-      // return result;
-      return Object.assign({}, state, {plays: state.plays.concat(action.color)});
+    return Object.assign({}, state, {plays: state.plays.concat(action.color)});
+  }
+  else if (action.type === 'COMPARE_PLAYS') {
+    if (comparePlays(state.computerPlays, state.plays)) {
+      return state;
     }
     else {
-      // return Object.assign({}, result, {youLose: true});
       return Object.assign({}, state, {youLose: true});
     }
-  }
-  else if (action.type === 'ADD_COMP_PLAY') {
-
   }
   
 };
