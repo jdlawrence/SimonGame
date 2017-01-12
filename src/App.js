@@ -1,14 +1,15 @@
-import React                from                   'react';
-import ReactDOM             from               'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import { Router, 
   Route, 
   browserHistory, 
   IndexRoute,
-  Link }                    from             'react-router';
-import Left                 from                   './Left';
-import Right                from                  './Right';
-import Board                from    './containers/board.js';
+  Link } from'react-router';
+import Left from './Left';
+import Right from './Right';
+// import Board from './containers/board.js';
+import GameStatusContainer from './containers/GameStatusContainer';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -85,12 +86,13 @@ export default class App extends React.Component {
       }, 3000 + 1000 * count); 
     }
   }
+        // <Board />
   render () {
     return (
       
       <div> 
         Simon Game!
-        <Board />
+        <GameStatusContainer/>
         <button onClick={this.startGame.bind(this)}>Start the Game!</button>
         { this.state.youLose ? <div>YOU LOSE</div> : null }
         <ul role="nav">
