@@ -10,9 +10,6 @@ const comparePlays = function(compPlays, humanPlays) {
   return true;
 };
 
-// var plays = ['green', 'red', 'blue', 'yellow'];
-// var temp = that.state.computerPlays.concat(plays[Math.floor(Math.random() * 4)]);
-
 const gameState = (state = {
   plays: [],
   computerPlays: ['yellow', 'blue'],
@@ -33,10 +30,11 @@ const gameState = (state = {
     console.log('my async action!!');
     return Object.assign({}, state, {computerPlays: state.computerPlays.concat(action.color)});
   }
-  else if (action.type === 'END_GAME') {
-    console.log('GAME OVERRRRRRRRR');
+  else if (action.type === 'END_ROUND') {
+    console.log('ROUND_OVER!!!!!!!!!!!!!!!!!!!!!');
     return state;
   }
+
 };
 
 export default gameState;

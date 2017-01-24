@@ -7,19 +7,23 @@ export const comparePlays = () => ({
   type: 'COMPARE_PLAYS'
 });
 
+export const endRound = () => ({
+  type: 'END_ROUND'
+});
+
 export const startGame = (count) => {
   return function(dispatch) {
     var plays = ['green', 'red', 'blue', 'yellow'];
     var randColor = plays[Math.floor(Math.random() * 4)];
     dispatch({
       type: 'START_GAME',
-      color: randColor
+      // color: randColor
+      color: 'green'
     });
     setTimeout(function () {
-      dispatch({
-        type: 'END_GAME'
-      });
-    }, count * 500);
+      dispatch(endRound());
+      dispatch(comparePlays());
+    }, count * 5000);
 
   };
 };
