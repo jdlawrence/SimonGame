@@ -29,7 +29,14 @@ const gameState = (state = {
       return Object.assign({}, state, {youLose: true});
     }
   }
-  
+  else if (action.type === 'START_GAME') {
+    console.log('my async action!!');
+    return Object.assign({}, state, {computerPlays: state.computerPlays.concat(action.color)});
+  }
+  else if (action.type === 'END_GAME') {
+    console.log('GAME OVERRRRRRRRR');
+    return state;
+  }
 };
 
 export default gameState;

@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(comparePlays());
   },
   startGame: () => {
-    dispatch(startGame());
+    dispatch(startGame(2));
   }
 });
 
