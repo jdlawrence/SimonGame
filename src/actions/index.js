@@ -12,7 +12,7 @@ export const endRound = () => ({
 });
 
 export const startGame = (count) => {
-  return function(dispatch) {
+  return function(dispatch, getState) {
     var plays = ['green', 'red', 'blue', 'yellow'];
     var randColor = plays[Math.floor(Math.random() * 4)];
     dispatch({
@@ -23,7 +23,13 @@ export const startGame = (count) => {
     setTimeout(function () {
       dispatch(endRound());
       dispatch(comparePlays());
-    }, count * 5000);
+      if (getState().youLose) {
+        console.log('it\s over!!!: ');
+      }
+      else {
+        dispatch(startGame(count+1));
+      }
+    }, count * 2000);
 
   };
 };
