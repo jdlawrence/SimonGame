@@ -2,13 +2,12 @@ import { connect } from 'react-redux';
 import { pushPlay, comparePlays, startGame, clearState } from '../actions';
 import GameStatus from '../components/GameStatus';
 
-console.log('GameStatus: ', GameStatus);
 const mapStateToProps = () => ({
-  // a: 5
 });
 
 const mapDispatchToProps = (dispatch) => ({
   clickBlue: () => {
+    console.log('blue clicked!!');
     dispatch(pushPlay('blue')); 
   },
   clickGreen: () => {

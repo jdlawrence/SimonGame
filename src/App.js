@@ -8,7 +8,6 @@ import { Router,
   Link } from'react-router';
 import Left from './Left';
 import Right from './Right';
-// import Board from './containers/board.js';
 import GameStatusContainer from './containers/GameStatusContainer';
 
 export default class App extends React.Component {
@@ -98,6 +97,7 @@ export default class App extends React.Component {
         <ul role="nav">
           <li><Link to="/left">Left</Link></li>
           <li><Link to="/right">Right</Link></li>
+          <li><Link to="/gamestatus">GameStatus</Link></li>
         </ul>
         {this.props.children && React.cloneElement(this.props.children, {
                 pushPlays: this.pushPlays.bind(this),
