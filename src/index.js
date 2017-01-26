@@ -14,6 +14,7 @@ import App                  from             './App.js';
 import Left                 from            './Left.js';
 import Right                from           './Right.js';
 import Footer               from          './Footer.js';
+import GameStatusContainer  from       './containers/GameStatusContainer.js';
 
 // const store = createStore(gameState);
 // const store = createStore(gameState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
@@ -31,6 +32,7 @@ class Index extends React.Component {
         <Route path="/" component={App}>
           <Route path="/left" component={Left}/>
           <Route path="/right" component={Right}/>
+          <Route path="/gameStatus" component={GameStatusContainer}/>
         </Route>
         <Route path="/footer" component={Footer}/>
       </Router>

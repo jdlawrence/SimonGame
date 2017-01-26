@@ -86,12 +86,12 @@ export default class App extends React.Component {
     }
   }
         // <Board />
+        // <GameStatusContainer/>
   render () {
     return (
       
       <div> 
         Simon Game!
-        <GameStatusContainer/>
         <button onClick={this.startGame.bind(this)}>Start the Game!</button>
         { this.state.youLose ? <div>YOU LOSE</div> : null }
         <ul role="nav">
