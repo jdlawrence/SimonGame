@@ -1,23 +1,20 @@
 import React, { Component, PropTypes } from 'react';
 
-const QuarterCircle = (({pathData, stroke, fill}) => {
-  console.log('**************', pathData);
+// const QuarterCircle = ({path, stroke, fill}) => {
+const QuarterCircle = ({pathData}) => {
+  // console.log('**************', path);
+  let {path, stroke, fill} = pathData;
+  console.log('**************', path, stroke, fill);
   return (
-    <div>
-      <svg width="200" height="200">
-        <path d={pathData.path}                
-              stroke={pathData.stroke} 
-              fill={pathData.fill}
+        <path d={path}                
+              stroke={stroke} 
+              fill={fill}
         />
-      </svg>
-    </div>
   );
-});
+};
 
 QuarterCircle.propTypes = {
-  pathData: PropTypes.array.isRequired,
-  stroke: PropTypes.string.isRequired,
-  fill: PropTypes.string.isRequired
+  pathData: PropTypes.object.isRequired
 };
 
 export default QuarterCircle;
