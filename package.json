@@ -25,8 +25,10 @@
   "homepage": "https://github.com/jdlawrence/SimonGame#readme",
   "dependencies": {
     "async": "^2.1.2",
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.5",
     "babel-preset-react": "^6.11.1",
+    "eslint": "^3.16.0",
     "path": "^0.12.7",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
