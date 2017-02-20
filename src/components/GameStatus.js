@@ -111,10 +111,30 @@ class GameStatus extends Component {
     var redStyle = {
       opacity: this.state.red
     };
-  
+
+            <path d="M 125 50 
+                 l 0 50
+                 a 50 50 0, 0, 1, -50 -50
+                 Z"    
+                 stroke="black" fill="#94db7f"/>    
+    let centerX = 185;
+    let centerY = 75;
+    let radius = 50;
+
+    var greenData = {
+      path: [
+        'M', centerX, centerY,
+        'l', -radius, 0,
+        'a', radius, radius, 0, 0, 1, radius, -radius, 
+        'Z'
+      ].join(' '),
+      stroke: 'black',
+      fill: 'green'
+    };
+
     return (
       <div onKeyPress={this.handleKey.bind(this)} tabIndex="1" ref="main">
-        <QuarterCircle size={[100, 100, 100]}/>
+        <QuarterCircle pathData={greenData}/>
         <h1>
           <button onClick={this.seqStart.bind(this)}>seqStart</button>
           <svg width="200" height="200">
