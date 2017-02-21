@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import QuarterCircle from './QuarterCircle';
 
-let centerX = 125;
+let centerX = 195;
 let centerY = 75;
 let radius = 50;
+let centerMaxRadius = 55;
 let centerOuterRadius = 26;
 let centerInnerRadius = 19;
 
@@ -67,11 +68,13 @@ let horizontalBar = {
 const GameBoard = (() => {
   return (
     <div>
-      <svg width="200" height="200">
+      <svg width="400" height="200">
+        <circle cx={centerX} cy={centerY} r={centerMaxRadius} fill="black"/>
         <QuarterCircle pathData={greenData}/>
         <QuarterCircle pathData={redData}/>
         <QuarterCircle pathData={blueData}/>
         <QuarterCircle pathData={yellowData}/>
+        <circle cx={centerX} cy={centerY} r={centerOuterRadius} fill="black"/>
         <path d={verticalBar.path} stroke={verticalBar.stroke} strokeWidth={verticalBar.strokeWidth}/>
         <path d={horizontalBar.path} stroke={horizontalBar.stroke} strokeWidth={horizontalBar.strokeWidth}/>
         <circle cx={centerX} cy={centerY} r={centerInnerRadius} fill="grey"/>
