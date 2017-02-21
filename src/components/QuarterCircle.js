@@ -4,7 +4,6 @@ import React, { Component, PropTypes } from 'react';
 const QuarterCircle = ({pathData}) => {
   // console.log('**************', path);
   let {path, stroke, fill} = pathData;
-  console.log('**************', path, stroke, fill);
   return (
         <path d={path}                
               stroke={stroke} 
