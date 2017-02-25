@@ -16,7 +16,8 @@ var greenData = {
     'Z'
   ].join(' '),
   stroke: 'black',
-  fill: 'green'
+  fill: 'green',
+  active: false
 };
 var redData = {
   path: [
@@ -26,7 +27,8 @@ var redData = {
     'Z'
   ].join(' '),
   stroke: 'black',
-  fill: 'red'
+  fill: 'red',
+  active: true 
 };
 var blueData = {
   path: [
@@ -36,7 +38,8 @@ var blueData = {
     'Z'
   ].join(' '),
   stroke: 'black',
-  fill: 'blue'
+  fill: 'blue',
+  active: false
 };
 var yellowData = {
   path: [
@@ -46,7 +49,8 @@ var yellowData = {
     'Z'
   ].join(' '),
   stroke: 'black',
-  fill: 'yellow'
+  fill: 'yellow',
+  active: false
 };
 
 let verticalBar = {
@@ -56,7 +60,7 @@ let verticalBar = {
   ].join(' '),
   stroke: 'black',
   strokeWidth: 8
-}
+};
 let horizontalBar = {
   path: [
     'M', centerX - radius, centerY,
@@ -64,7 +68,7 @@ let horizontalBar = {
   ].join(' '),
   stroke: 'black',
   strokeWidth: 8
-}
+};
 const GameBoard = (() => {
   return (
     <div>
