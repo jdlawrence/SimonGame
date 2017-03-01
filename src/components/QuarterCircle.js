@@ -3,10 +3,10 @@ import React, { Component, PropTypes } from 'react';
 const QuarterCircle = ({pathData}) => {
   let {path, stroke, fill} = pathData;
   return (
-        <path d={path}                
-              stroke={stroke} 
-              fill={fill}
-        />
+    <path d={path}                
+          stroke={stroke} 
+          fill={fill}
+    />
   );
 };
 
