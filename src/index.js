@@ -4,7 +4,7 @@ import { createStore,
   applyMiddleware,
   compose }                 from                'redux';
 import { Provider }         from          'react-redux';
-import gameState            from           './reducers';
+import rootReducer            from           './reducers';
 import { Router, 
   Route, 
   browserHistory, 
@@ -18,9 +18,8 @@ import GameStatusContainer  from       './containers/GameStatusContainer.js';
 
 // const store = createStore(gameState);
 // const store = createStore(gameState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-var initialState = {message: 'my initial state'};
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(gameState, initialState, composeEnhancers(
+const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)
   ));
 

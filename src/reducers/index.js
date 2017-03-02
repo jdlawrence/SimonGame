@@ -1,3 +1,6 @@
+import { combineReducers } from 'redux';
+import QCs from './QCReducer';
+
 const comparePlays = function(compPlays, humanPlays) {
   if (compPlays.length === 0 || humanPlays.length === 0 || compPlays.length !== humanPlays.length) {
     return false;
@@ -43,8 +46,11 @@ const gameState = (state = {
       youLose: false,
       roundCount: 0
     };  
+  } else {
+    return state;
   }
 };
 
-export default gameState;
+const rootReducer = combineReducers({gameState, QCs});
 
+export default rootReducer;

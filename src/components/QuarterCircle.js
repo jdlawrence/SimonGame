@@ -6,18 +6,11 @@ const QuarterCircle = ({pathData}) => {
     opacity: active ? 1.0 : 0.5
   };
   return (
-<<<<<<< HEAD
-    <path d={path}                
-          stroke={stroke} 
-          fill={fill}
+    <path d={path}
+      stroke={stroke}
+      fill={fill}
+      style={style}
     />
-=======
-        <path d={path}                
-              stroke={stroke} 
-              fill={fill}
-              style={style}
-        />
->>>>>>> c465fe6443fb031881b1726890b1734665d87102
   );
 };
 
