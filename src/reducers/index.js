@@ -46,10 +46,10 @@ const gameState = (state = {
       youLose: false,
       roundCount: 0
     };  
-  }
-  else {
+  } else {
     return state;
   }
+
 };
 
 const rootReducer = combineReducers({ gameState, QCState } );

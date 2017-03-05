@@ -5,17 +5,28 @@ const initialState = [
   },
   {
     color: 'red',
-    active: 'false'
+    active: false
   },
   {
     color: 'blue',
-    active: 'false'
+    active: false
   },
   {
     color: 'yellow',
-    active: 'false'
+    active: false
   }
 ];
+
+
+function QCs(state = initialState, action) {
+  switch(action.type) {
+    default:
+      return state;
+  }
+}
+
+export default QCs;
+
 
 // TODO
 // Make a reducer that takes in a color on the action,
