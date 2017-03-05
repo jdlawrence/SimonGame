@@ -6,7 +6,6 @@ import { Router,
   browserHistory, 
   IndexRoute,
   Link } from'react-router';
-import Left from './Left';
 import Right from './Right';
 import GameStatusContainer from './containers/GameStatusContainer';
 
@@ -95,7 +94,6 @@ export default class App extends React.Component {
         <button onClick={this.startGame.bind(this)}>Start the Game!</button>
         { this.state.youLose ? <div>YOU LOSE</div> : null }
         <ul role="nav">
-          <li><Link to="/left">Left</Link></li>
           <li><Link to="/right">Right</Link></li>
           <li><Link to="/gamestatus">GameStatus</Link></li>
         </ul>

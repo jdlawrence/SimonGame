@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { routerReducer as routing } from 'react-router-redux';
 import QCState from './QCReducer';
 
 const comparePlays = function(compPlays, humanPlays) {
@@ -52,6 +53,6 @@ const gameState = (state = {
 
 };
 
-const rootReducer = combineReducers({ gameState, QCState } );
+const rootReducer = combineReducers({ gameState, QCState, routing } );
 
 export default rootReducer;
