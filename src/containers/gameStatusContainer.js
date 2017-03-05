@@ -2,8 +2,13 @@ import { connect } from 'react-redux';
 import { pushPlay, comparePlays, startGame, clearState } from '../actions';
 import GameStatus from '../components/GameStatus';
 
-const mapStateToProps = () => ({
-});
+const mapStateToProps = (state) => {
+  console.log('**************', state);
+  return {
+    QCState: state.QCState,
+    gameState: state.gameState
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   clickBlue: () => {
@@ -29,6 +34,5 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const GameStatusContainer = connect(mapStateToProps, mapDispatchToProps)(GameStatus);
-// const GameStatusContainer = connect(mapDispatchToProps)(GameStatus);
 
 export default GameStatusContainer; 

@@ -84,8 +84,6 @@ export default class App extends React.Component {
       }, 3000 + 1000 * count); 
     }
   }
-        // <Board />
-        // <GameStatusContainer/>
   render () {
     return (
       
