@@ -3,8 +3,8 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
 
-import App from './App.js';
-import Right from './Right.js';
+import App from './components/App.js';
+import Right from './components/Right.js';
 import GameStatusContainer from './containers/GameStatusContainer.js';
 import store, { history } from './store';
 

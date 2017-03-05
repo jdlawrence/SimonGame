@@ -10,6 +10,7 @@ let centerOuterRadius = 26;
 let centerInnerRadius = 19;
 
 var greenData = {
+  color: 'green',
   path: [
     'M', centerX, centerY,
     'l', -radius, 0,
@@ -21,6 +22,7 @@ var greenData = {
   active: false
 };
 var redData = {
+  color: 'red',
   path: [
     'M', centerX, centerY,
     'l', 0, -radius,
@@ -32,6 +34,7 @@ var redData = {
   active: false
 };
 var blueData = {
+  color: 'blue',
   path: [
     'M', centerX, centerY,
     'l', radius, 0,
@@ -43,6 +46,7 @@ var blueData = {
   active: true
 };
 var yellowData = {
+  color: 'yellow',
   path: [
     'M', centerX, centerY,
     'l', 0, radius,
@@ -81,10 +85,10 @@ class GameStatus extends Component {
       <div>
         <svg width="400" height="200">
           <circle cx={centerX} cy={centerY} r={centerMaxRadius} fill="black" />
-          <QuarterCircle pathData={greenData} />
-          <QuarterCircle pathData={redData} />
-          <QuarterCircle pathData={blueData} />
-          <QuarterCircle pathData={yellowData} />
+          <QuarterCircle pathData={greenData} {...this.props}/>
+          <QuarterCircle pathData={redData} {...this.props} />
+          <QuarterCircle pathData={blueData} {...this.props}/>
+          <QuarterCircle pathData={yellowData} {...this.props}/>
           <circle cx={centerX} cy={centerY} r={centerOuterRadius} fill="black" />
           <path d={verticalBar.path} stroke={verticalBar.stroke} strokeWidth={verticalBar.strokeWidth} />
           <path d={horizontalBar.path} stroke={horizontalBar.stroke} strokeWidth={horizontalBar.strokeWidth} />
@@ -93,7 +97,6 @@ class GameStatus extends Component {
       </div>
     );
   }
-
 
 }
 

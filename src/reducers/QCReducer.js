@@ -1,23 +1,36 @@
-const initialState = [
-  {
-    color: 'green',
-    active: false
-  },
-  {
-    color: 'red',
-    active: false
-  },
-  {
-    color: 'blue',
-    active: false
-  },
-  {
-    color: 'yellow',
-    active: false
-  }
-];
+// const initialState = [
+//   {
+//     color: 'green',
+//     active: false
+//   },
+//   {
+//     color: 'red',
+//     active: false
+//   },
+//   {
+//     color: 'blue',
+//     active: false
+//   },
+//   {
+//     color: 'yellow',
+//     active: false
+//   }
+// ];
 
-
+const initialState = {
+  green: {
+    active: true 
+  },
+  red: {
+    active: false
+  },
+  blue: {
+    active: false
+  },
+  yellow: {
+    active: true 
+  },
+};
 function QCs(state = initialState, action) {
   switch(action.type) {
     default:
