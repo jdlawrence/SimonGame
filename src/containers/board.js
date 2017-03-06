@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { pushPlay, comparePlays, startGame } from '../actions';
+import * as actionCreators from '../actions';
 
 let Board = ( {clickBlue, clickGreen, clickYellow, clickRed, comparePlays, startGame} ) => {
   return (
@@ -13,8 +13,7 @@ let Board = ( {clickBlue, clickGreen, clickYellow, clickRed, comparePlays, start
       <div onClick={startGame}>Compare</div>
     </div>
     );
-};
-
+}
 const mapStateToProps = () => ({
   a: 5
 });

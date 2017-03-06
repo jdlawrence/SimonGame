@@ -1,3 +1,11 @@
+export const toggleColor = (color) => {
+  console.log('color', color);
+  return {
+    type: 'TOGGLE_COLOR',
+    color
+  };
+};
+
 export const pushPlay = (color) => ({
   type: 'PUSH_PLAY',
   color: color
@@ -12,7 +20,7 @@ export const clearState = () => ({
   type: 'CLEAR_STATE'
 });
 export const startGame = (count) => {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     var plays = ['green', 'red', 'blue', 'yellow'];
     var randColor = plays[Math.floor(Math.random() * 4)];
     dispatch({
@@ -26,7 +34,7 @@ export const startGame = (count) => {
         console.log('it\s over!!!: ');
       }
       else {
-        dispatch(startGame(count+1));
+        dispatch(startGame(count + 1));
       }
     }, count * 1000 + 5000);
 
