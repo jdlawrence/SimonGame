@@ -101,12 +101,12 @@ class GameStatus extends Component {
 }
 
 GameStatus.propTypes = {
-  clickBlue: PropTypes.func.isRequired,
-  clickRed: PropTypes.func.isRequired,
-  clickGreen: PropTypes.func.isRequired,
-  clickYellow: PropTypes.func.isRequired,
-  comparePlays: PropTypes.func.isRequired,
-  startGame: PropTypes.func.isRequired,
+  // clickBlue: PropTypes.func.isRequired,
+  // clickRed: PropTypes.func.isRequired,
+  // clickGreen: PropTypes.func.isRequired,
+  // clickYellow: PropTypes.func.isRequired,
+  // comparePlays: PropTypes.func.isRequired,
+  // startGame: PropTypes.func.isRequired,
 };
 
 export default GameStatus;
