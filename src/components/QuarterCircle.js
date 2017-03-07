@@ -6,8 +6,8 @@ class QuarterCircle extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick(e) {
-    // console.log('objecthere', e);
     this.props.pushPlay(this.props.pathData.color);
+    this.props.playSequence();
   }
   render() {
     // console.log(this.props.pathData.color); 

@@ -4,6 +4,7 @@ const initialState = {
   blue: false,
   yellow: false 
 };
+
 function QCs(state = initialState, action) {
   switch (action.type) {
     case 'TOGGLE_COLOR':
