@@ -17,6 +17,7 @@ const comparePlays = function(compPlays, humanPlays) {
 const gameState = (state = {
   plays: [],
   computerPlays: [],
+  dummyPlays: ['blue', 'red', 'green', 'yellow'],
   youLose: false,
   roundCount: 0
 }, action) => {

@@ -6,6 +6,16 @@ export const toggleColor = (color) => {
   };
 };
 
+// Since this action contains setTimeout and it's asynchronous
+// it must return function
+export const playSequence = () => {
+  return function (dispatch, getState) {
+    var compPlays = getState().gameState.dummyPlays;
+    console.log(compPlays);
+    // for (let i = 0; i < )
+  }
+}
+
 export const pushPlay = (color) => ({
   type: 'PUSH_PLAY',
   color: color
