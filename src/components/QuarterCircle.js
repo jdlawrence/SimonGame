@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 class QuarterCircle extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -24,6 +24,8 @@ class QuarterCircle extends Component {
         fill={fill}
         style={style}
         onClick={this.handleClick}
+        onMouseEnter={() => this.props.toggleColor(this.props.pathData.color)}
+        onMouseLeave={() => this.props.toggleColor(this.props.pathData.color)}
       />
     );
   }
