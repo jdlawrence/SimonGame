@@ -22,27 +22,38 @@ const gameState = (state = {
   roundCount: 0
 }, action) => {
   if (action.type === 'PUSH_PLAY') {
-    return Object.assign({}, state, {plays: state.plays.concat(action.color)});
+    return {
+      ...state, 
+      plays: state.plays.concat(action.color)
+    };
   }
   else if (action.type === 'COMPARE_PLAYS') {
     if (comparePlays(state.computerPlays, state.plays)) {
       return state;
     }
     else {
-      return Object.assign({}, state, {youLose: true});
+      return {
+        ...state, youLose: true
+      };
     }
   }
-  else if (action.type === 'START_GAME') {
-    return Object.assign({}, state, {computerPlays: state.computerPlays.concat(action.color)});
+  else if (action.type === 'PUSH_COMP_PLAY') {
+    console.log('start');
+    return {
+      ...state, 
+      computerPlays: state.computerPlays.concat(action.color)
+    };
   }
   else if (action.type === 'END_ROUND') {
-    return Object.assign({}, state, {
+    return {
+      ...state,
       plays: [],
       roundCount: state.roundCount + 1
-    });
+    };
   }
   else if (action.type === 'CLEAR_STATE') {
     return {
+      ...state, 
       plays: [],
       computerPlays: [],
       youLose: false,
