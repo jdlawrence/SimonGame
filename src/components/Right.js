@@ -78,22 +78,18 @@ export default class Right extends Component {
       case 114:
         console.log('this********: ', this.clickRed);
         this.clickRed();
-        // alert(this);
         break;
       case 103:
         console.log('this********: ', this.clickGreen);
         this.clickGreen();
-        // alert(this);
         break;
       case 98:
         console.log('this********: ', this.clickBlue);
         this.clickBlue();
-        // alert(this);
         break;
       case 121:
         console.log('this********: ', this.clickYellow);
         this.clickYellow();
-        // alert(this);
         break;
     }
   }
