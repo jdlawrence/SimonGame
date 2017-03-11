@@ -38,7 +38,6 @@ const gameState = (state = {
     }
   }
   else if (action.type === 'PUSH_COMP_PLAY') {
-    console.log('start');
     return {
       ...state, 
       computerPlays: state.computerPlays.concat(action.color)
