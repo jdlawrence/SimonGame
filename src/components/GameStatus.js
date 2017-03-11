@@ -14,7 +14,7 @@ var greenData = {
   path: [
     'M', centerX, centerY,
     'l', -radius, 0,
-    'a', radius, radius, 0, 0, 1, radius, -radius, 
+    'a', radius, radius, 0, 0, 1, radius, -radius,
     'Z'
   ].join(' '),
   stroke: 'black',
@@ -26,7 +26,7 @@ var redData = {
   path: [
     'M', centerX, centerY,
     'l', 0, -radius,
-    'a', radius, radius, 0, 0, 1, radius, radius, 
+    'a', radius, radius, 0, 0, 1, radius, radius,
     'Z'
   ].join(' '),
   stroke: 'black',
@@ -38,7 +38,7 @@ var blueData = {
   path: [
     'M', centerX, centerY,
     'l', radius, 0,
-    'a', radius, radius, 0, 0, 1, -radius, radius, 
+    'a', radius, radius, 0, 0, 1, -radius, radius,
     'Z'
   ].join(' '),
   stroke: 'black',
@@ -50,7 +50,7 @@ var yellowData = {
   path: [
     'M', centerX, centerY,
     'l', 0, radius,
-    'a', radius, radius, 0, 0, 1, -radius, -radius, 
+    'a', radius, radius, 0, 0, 1, -radius, -radius,
     'Z'
   ].join(' '),
   stroke: 'black',
@@ -79,17 +79,37 @@ class GameStatus extends Component {
   constructor(props) {
     super(props);
   }
+
+  handleKey(e) {
+    console.log('handle Key pressed', e.charCode);
+    switch (e.charCode) {
+      case 114:
+        this.props.flashQC('red');
+        break;
+      case 103:
+        this.props.flashQC('green');
+        break;
+      case 98:
+        this.props.flashQC('blue');
+        break;
+      case 121:
+        this.props.flashQC('yellow');
+        break;
+    }
+  }
+
   render() {
 
     return (
-      <div>
+
+      <div onKeyPress={this.handleKey.bind(this)} tabIndex="1" ref="main">
         <button onClick={this.props.startGame}>Start Game Redux</button>
         <svg width="400" height="200">
           <circle cx={centerX} cy={centerY} r={centerMaxRadius} fill="black" />
-          <QuarterCircle pathData={greenData} {...this.props}/>
+          <QuarterCircle pathData={greenData} {...this.props} />
           <QuarterCircle pathData={redData} {...this.props} />
-          <QuarterCircle pathData={blueData} {...this.props}/>
-          <QuarterCircle pathData={yellowData} {...this.props}/>
+          <QuarterCircle pathData={blueData} {...this.props} />
+          <QuarterCircle pathData={yellowData} {...this.props} />
           <circle cx={centerX} cy={centerY} r={centerOuterRadius} fill="black" />
           <path d={verticalBar.path} stroke={verticalBar.stroke} strokeWidth={verticalBar.strokeWidth} />
           <path d={horizontalBar.path} stroke={horizontalBar.stroke} strokeWidth={horizontalBar.strokeWidth} />
