@@ -9,9 +9,7 @@ export const playSequence = () => {
   // Since this action contains setTimeout and it's asynchronous
   // it must return function
   return function (dispatch, getState) {
-    var compPlays = getState().gameState.dummyPlays;
-    // var compPlays = getState();
-    // console.log('state', compPlays.gameState);
+    var compPlays = getState().gameState.computerPlays;
     for (let i = 0; i < compPlays.length; i++) {
       setTimeout(() => {
         // Asynchronous action must be dispatched
@@ -40,32 +38,40 @@ export const endRound = () => ({
 export const clearState = () => ({
   type: 'CLEAR_STATE'
 });
-export const startGame = (count) => {
+export const startGame = () => {
   return function (dispatch, getState) {
-    var plays = ['green', 'red', 'blue', 'yellow'];
-    var randColor = plays[Math.floor(Math.random() * 4)];
-    
     // Reset all settings;
     dispatch(clearState());
 
-    // Push a play for the computer
-    dispatch(pushCompPlay(randColor));
+    (function gameAction() {
+      var plays = ['green', 'red', 'blue', 'yellow'];
+      var randColor = plays[Math.floor(Math.random() * 4)];
+      var roundCount = getState().gameState.roundCount;
 
-    // Playback the sequence of computer plays
-    dispatch(playSequence());
+      // Push a play for the computer
+      dispatch(pushCompPlay(randColor));
 
-    // Wait some time for the human to play
+      // Playback the sequence of computer plays
+      dispatch(playSequence());
 
-    setTimeout(function () {
-      dispatch(comparePlays());
-      // dispatch(endRound());
-      // if (getState().youLose) {
-      //   console.log('it\s over!!!: ');
-      // }
-      // else {
-      //   dispatch(startGame(count + 1));
-      // }
-    }, count * 1000 + 5000);
+      // Wait some time for the human to play
 
+      setTimeout(function () {
+
+        // Compare plays
+        dispatch(comparePlays());
+
+        // Resets human plays back to 0 and increase roundCount
+        dispatch(endRound());
+
+        if (getState().gameState.youLose) {
+          console.log('it\s over!!!: ');
+        }
+        else {
+          gameAction();
+        }
+      }, roundCount * 1000 + 5000);
+
+    })();
   };
 };
