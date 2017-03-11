@@ -7,7 +7,6 @@ class QuarterCircle extends Component {
   }
   handleClick(e) {
     this.props.pushPlay(this.props.pathData.color);
-    this.props.playSequence();
   }
   render() {
     let active = this.props.QCState[this.props.pathData.color];
