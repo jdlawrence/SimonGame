@@ -85,15 +85,19 @@ class GameStatus extends Component {
     switch (e.charCode) {
       case 114:
         this.props.flashQC('red');
+        this.props.pushPlay('red');
         break;
       case 103:
         this.props.flashQC('green');
+        this.props.pushPlay('green');
         break;
       case 98:
         this.props.flashQC('blue');
+        this.props.pushPlay('blue');
         break;
       case 121:
         this.props.flashQC('yellow');
+        this.props.pushPlay('yellow');
         break;
     }
   }
