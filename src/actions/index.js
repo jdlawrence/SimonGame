@@ -5,6 +5,14 @@ export const toggleColor = (color) => {
   };
 };
 
+export const flashQC = (color) => {
+  return function (dispatch, getState) {
+    dispatch(toggleColor(color));
+    setTimeout(function() {
+      dispatch(toggleColor(color)); 
+    }, 300);
+  }
+}
 export const playSequence = () => {
   // Since this action contains setTimeout and it's asynchronous
   // it must return function
