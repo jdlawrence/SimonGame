@@ -1,5 +1,5 @@
-import reducer,{ initialState } from './QCReducer';
-import { toggleColor } from '../actions';
+import reducer, { initialState } from './QCReducer';
+import { TOGGLE_COLOR, toggleColor } from '../actions';
 
 describe('game reducer', () => {
   it('generates initial state', () => {
@@ -8,13 +8,16 @@ describe('game reducer', () => {
     ).toEqual(initialState);
   });
 
-  it(`handles action toggleColor`, () => {
-    expect(
-      reducer(initialState, toggleColor('blue'))
-    ).toEqual({
-      ...initialState,
-      blue: true
-    });
+  it(`handles action ${TOGGLE_COLOR}`, () => {
+    expect(reducer(initialState, toggleColor('blue')))
+      .toEqual({ ...initialState, blue: true });
+    expect(reducer(initialState, toggleColor('red')))
+      .toEqual({ ...initialState, red: true });
+    expect(reducer(initialState, toggleColor('green')))
+      .toEqual({ ...initialState, green: true });
+    expect(reducer(initialState, toggleColor('yellow')))
+      .toEqual({ ...initialState, yellow: true });
+
   });
 
 });
