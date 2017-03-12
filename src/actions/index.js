@@ -1,6 +1,14 @@
+export const TOGGLE_COLOR = 'TOGGLE_COLOR';
+export const PUSH_COMP_PLAY = 'PUSH_COMP_PLAY';
+export const PUSH_HUMAN_PLAY = 'PUSH_HUMAN_PLAY';
+export const END_ROUND = 'END_ROUND';
+export const CLEAR_STATE = 'CLEAR_STATE';
+export const COMPARE_PLAYS = 'COMPARE_PLAYS';
+
+
 export const toggleColor = (color) => {
   return {
-    type: 'TOGGLE_COLOR',
+    type: TOGGLE_COLOR,
     color
   };
 };
@@ -30,21 +38,21 @@ export const playSequence = () => {
   };
 };
 export const pushCompPlay = (randColor) => ({
-  type: 'PUSH_COMP_PLAY',
+  type: PUSH_COMP_PLAY,
   color: randColor
 });
-export const pushPlay = (color) => ({
-  type: 'PUSH_PLAY',
+export const pushHumanPlay = (color) => ({
+  type: PUSH_HUMAN_PLAY,
   color: color
 });
 export const comparePlays = () => ({
-  type: 'COMPARE_PLAYS'
+  type: COMPARE_PLAYS
 });
 export const endRound = () => ({
-  type: 'END_ROUND'
+  type: END_ROUND
 });
 export const clearState = () => ({
-  type: 'CLEAR_STATE'
+  type: CLEAR_STATE
 });
 export const startGame = () => {
   return function (dispatch, getState) {
