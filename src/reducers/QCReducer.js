@@ -10,7 +10,7 @@ function QCs(state = initialState, action) {
     case 'TOGGLE_COLOR':
       var toggledColor = {};
       toggledColor[action.color] = !state[action.color];
-      return Object.assign({}, state, toggledColor);
+      return {...state, ...toggledColor};
     default:
       return state;
   }
