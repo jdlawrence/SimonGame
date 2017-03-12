@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --progress --inline --host 0.0.0.0 --port 5040 --colors --watch",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -42,8 +44,10 @@
   },
   "devDependencies": {
     "babel-core": "^6.14.0",
+    "babel-jest": "^19.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-es2015": "^6.14.0",
+    "jest": "^19.0.2",
     "webpack": "^1.13.2"
   }
 }
