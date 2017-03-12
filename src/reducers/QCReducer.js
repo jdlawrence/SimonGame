@@ -1,3 +1,5 @@
+import { TOGGLE_COLOR } from '../actions';
+  
 export const initialState = {
   green: false,
   red: false,
@@ -7,7 +9,7 @@ export const initialState = {
 
 function QCs(state = initialState, action) {
   switch (action.type) {
-    case 'TOGGLE_COLOR':
+    case TOGGLE_COLOR:
       var toggledColor = {};
       toggledColor[action.color] = !state[action.color];
       return {...state, ...toggledColor};
