@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   green: false,
   red: false,
   blue: false,
