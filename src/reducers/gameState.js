@@ -8,13 +8,15 @@ import {
 
 import comparePlays from '../utils/comparePlays';
 
-const gameState = (state = {
+const initialState = {
   plays: [],
   computerPlays: [],
   dummyPlays: ['blue', 'red', 'green', 'yellow'],
   youLose: false,
   roundCount: 0
-}, action) => {
+};
+
+const gameState = (state = initialState, action) => {
   if (action.type === PUSH_HUMAN_PLAY) {
     return {
       ...state, 
