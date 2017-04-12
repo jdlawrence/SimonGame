@@ -24,7 +24,7 @@ const gameState = (state = initialState, action) => {
     };
   }
   else if (action.type === COMPARE_PLAYS) {
-    if (comparePlays(state.compPlays, state.plays)) {
+    if (comparePlays(state.compPlays, state.humanPlays)) {
       return state;
     }
     else {
