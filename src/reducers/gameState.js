@@ -9,8 +9,8 @@ import {
 import comparePlays from '../utils/comparePlays';
 
 const initialState = {
-  plays: [],
-  computerPlays: [],
+  humanPlays: [],
+  compPlays: [],
   dummyPlays: ['blue', 'red', 'green', 'yellow'],
   youLose: false,
   roundCount: 0
@@ -20,11 +20,11 @@ const gameState = (state = initialState, action) => {
   if (action.type === PUSH_HUMAN_PLAY) {
     return {
       ...state, 
-      plays: state.plays.concat(action.color)
+      humanPlays: state.humanPlays.concat(action.color)
     };
   }
   else if (action.type === COMPARE_PLAYS) {
-    if (comparePlays(state.computerPlays, state.plays)) {
+    if (comparePlays(state.compPlays, state.plays)) {
       return state;
     }
     else {
@@ -36,21 +36,21 @@ const gameState = (state = initialState, action) => {
   else if (action.type === PUSH_COMP_PLAY) {
     return {
       ...state, 
-      computerPlays: state.computerPlays.concat(action.color)
+      compPlays: state.compPlays.concat(action.color)
     };
   }
   else if (action.type === END_ROUND) {
     return {
       ...state,
-      plays: [],
+      humanPlays: [],
       roundCount: state.roundCount + 1
     };
   }
   else if (action.type === CLEAR_STATE) {
     return {
       ...state, 
-      plays: [],
-      computerPlays: [],
+      humanPlays: [],
+      compPlays: [],
       youLose: false,
       roundCount: 0
     };  
