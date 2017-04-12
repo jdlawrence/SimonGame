@@ -1,6 +1,7 @@
 import {
   PUSH_HUMAN_PLAY, pushHumanPlay,
   PUSH_COMP_PLAY, pushCompPlay,
+  COMPARE_PLAYS, comparePlays
 } from '../actions';
 import reducer, { initialState } from './gameState';
 
@@ -25,6 +26,16 @@ describe('Methods of the gameState reducer', () => {
   it(`handles calls to ${PUSH_COMP_PLAY}`, () => {
     expect(reducer(initialState, pushCompPlay('blue')).compPlays)
       .toEqual(['blue'])
+  })
+
+  it(`Expect ${COMPARE_PLAYS} to return false for "you lose" when human and compPlays are equal`, () => {
+    var newState = reducer(initialState, pushHumanPlay('red'));
+    newState = reducer(initialState, pushHumanPlay('blue'));
+    newState = reducer(initialState, pushCompPlay('red'));
+    newState = reducer(initialState, pushCompPlay('blue'));
+    
+    expect(reducer(newState, comparePlays(newState.compPlays, newState.humanPlays)).youLose)
+      .toEqual(false);
   })
 
 })
