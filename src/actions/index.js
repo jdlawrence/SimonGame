@@ -25,7 +25,7 @@ export const playSequence = () => {
   // Since this action contains setTimeout and it's asynchronous
   // it must return function
   return function (dispatch, getState) {
-    var compPlays = getState().gameState.computerPlays;
+    var compPlays = getState().gameState.compPlays;
     for (let i = 0; i < compPlays.length; i++) {
       setTimeout(() => {
         // Asynchronous action must be dispatched
