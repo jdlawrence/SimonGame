@@ -1,7 +1,9 @@
 import {
   PUSH_HUMAN_PLAY, pushHumanPlay,
   PUSH_COMP_PLAY, pushCompPlay,
-  COMPARE_PLAYS, comparePlays
+  COMPARE_PLAYS, comparePlays,
+  CLEAR_STATE, clearState,
+  END_ROUND, endRound
 } from '../actions';
 import reducer, { initialState } from './gameState';
 
@@ -30,12 +32,31 @@ describe('Methods of the gameState reducer', () => {
 
   it(`Expect ${COMPARE_PLAYS} to return false for "you lose" when human and compPlays are equal`, () => {
     var newState = reducer(initialState, pushHumanPlay('red'));
-    newState = reducer(initialState, pushHumanPlay('blue'));
-    newState = reducer(initialState, pushCompPlay('red'));
-    newState = reducer(initialState, pushCompPlay('blue'));
-    
+    newState = reducer(newState, pushHumanPlay('blue'));
+    newState = reducer(newState, pushCompPlay('red'));
+    newState = reducer(newState, pushCompPlay('blue'));
+
     expect(reducer(newState, comparePlays(newState.compPlays, newState.humanPlays)).youLose)
       .toEqual(false);
   })
 
+  it(`Expect ${COMPARE_PLAYS} to return true for "you lose" when human and compPlays are unequal`, () => {
+    var newState = reducer(initialState, pushHumanPlay('red'));
+    newState = reducer(newState, pushHumanPlay('green'));
+    newState = reducer(newState, pushCompPlay('red'));
+    newState = reducer(newState, pushCompPlay('blue'));
+
+    expect(reducer(newState, comparePlays(newState.compPlays, newState.humanPlays)).youLose)
+      .toEqual(true);
+  })
+
+  it(`Expect ${END_ROUND} to empty the humanPlays array`, () => {
+    var newState = reducer(initialState, pushHumanPlay('red'));
+    newState = reducer(newState, pushHumanPlay('green'));
+    newState = reducer(newState, pushCompPlay('red'));
+    newState = reducer(newState, pushCompPlay('blue'));
+
+    expect(reducer(newState, endRound()).humanPlays.length).toEqual(0);
+  })
+  
 })
