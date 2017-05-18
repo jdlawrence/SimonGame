@@ -58,5 +58,16 @@ describe('Methods of the gameState reducer', () => {
 
     expect(reducer(newState, endRound()).humanPlays.length).toEqual(0);
   })
-  
+
+  it(`Expect ${CLEAR_STATE} to empty the humanPlays and compPlays arrays`, () => {
+    var newState = reducer(initialState, pushHumanPlay('red'));
+    newState = reducer(newState, pushHumanPlay('green'));
+    newState = reducer(newState, pushCompPlay('red'));
+    newState = reducer(newState, pushCompPlay('blue'));
+
+    expect(reducer(newState, clearState()).humanPlays.length).toEqual(0);
+    expect(reducer(newState, clearState()).compPlays.length).toEqual(0);
+  })
+
+
 })
