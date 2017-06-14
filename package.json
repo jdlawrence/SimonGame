@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "webpack-dev-server --progress --inline --host 0.0.0.0 --port 5040 --colors --watch",
     "start": "node server.js",
+    "start-prod": "NODE_ENV=production && node server.js",
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "deploy": "NODE_ENV=production webpack -p --config webpack.production.config.js",
-    "heroku-postbuild": "rimraf dist && webpack -p --config ./webpack.prod.config.js --progress"
+    "heroku-postbuild": "rimraf dist && webpack -p --config ./webpack.production.config.js --progress"
   },
   "repository": {
     "type": "git",
