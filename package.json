@@ -9,7 +9,7 @@
     "start-prod": "NODE_ENV=production node server.js",
     "test": "jest",
     "test:watch": "npm test -- --watch",
-    "heroku-postbuild": "rimraf dist && webpack -p --config ./webpack.production.config.js --progress"
+    "postinstall": "rimraf dist && webpack -p --config ./webpack.production.config.js --progress"
   },
   "repository": {
     "type": "git",
