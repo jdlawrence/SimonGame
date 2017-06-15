@@ -21,10 +21,7 @@ if (isDeveloping) {
     console.log(`Listening at http://localhost:${PORT}/`);
   });
 } else {
-  app.use(express.static(__dirname + '/dist'));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-  });
+  app.use(express.static(__dirname + '/'));
   app.listen(PORT, () => {
     console.log(`Listening at http://localhost:${PORT}/`);
   })
