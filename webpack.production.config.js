@@ -3,7 +3,7 @@ var webpack = require('webpack');
 const PORT = process.env.PORT || 5040;
 
 module.exports = {
-  devtool: 'source',
+  devtool: 'source-map',
 
   entry: [
     './src/index.js'
@@ -16,12 +16,17 @@ module.exports = {
   },
 
   plugins: [
+     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': "'production'"
       }
     }),
-    
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
+    }),
   ],
 
   module: {
