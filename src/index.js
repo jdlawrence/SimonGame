@@ -5,7 +5,7 @@ import { Router, Route, browserHistory } from 'react-router';
 
 import App from './components/App.js';
 import Right from './components/Right.js';
-import GameStatusContainer from './containers/GameStatusContainer.js';
+import GameStatusContainer from './containers/GameStatusContainer';
 import store, { history } from './store';
 
 render(
