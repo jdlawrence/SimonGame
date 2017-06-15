@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5040;
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const app = express();
 
-console.log('serrrvvverrrrr***', app.get('env'));
+console.log('serrrvvverrrrr**', app.get('env'));
 if (isDeveloping) {
   new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
