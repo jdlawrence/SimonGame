@@ -7,7 +7,7 @@ import { Router,
   IndexRoute,
   Link } from'react-router';
 import Right from './Right';
-import GameStatusContainer from '../containers/GameStatusContainer';
+import GameStatusContainer from '../containers/GameStatusContainer.js';
 
 export default class App extends React.Component {
   constructor(props) {
