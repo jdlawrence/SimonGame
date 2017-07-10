@@ -107,7 +107,7 @@ class GameStatus extends Component {
     return (
 
       <div onKeyPress={this.handleKey.bind(this)} tabIndex="1" ref="main">
-        <button onClick={this.props.startGame}>Start Game Redux</button>
+        <button onClick={this.props.startGame}>Start Game Redux!</button>
         <svg width="400" height="200">
           <circle cx={centerX} cy={centerY} r={centerMaxRadius} fill="black" />
           <QuarterCircle pathData={greenData} {...this.props} />
