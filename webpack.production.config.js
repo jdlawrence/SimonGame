@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 const PORT = process.env.PORT || 5040;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -15,6 +16,11 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      inject: 'body',
+      filename: 'index.html'
+    }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
