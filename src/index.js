@@ -3,6 +3,9 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
 
+// Import CSS
+import css from './styles/style.css';
+
 import App from './components/App.js';
 import Right from './components/Right.js';
 import GameStatusContainer from './containers/GameStatusContainer';
