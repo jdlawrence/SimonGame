@@ -87,7 +87,7 @@ export default class App extends React.Component {
   render () {
     return (
       
-      <div> 
+      <div className="simon"> 
         Simon Game!
         <button onClick={this.startGame.bind(this)}>Start the Game!</button>
         { this.state.youLose ? <div>YOU LOSE</div> : null }
