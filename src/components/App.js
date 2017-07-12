@@ -8,7 +8,7 @@ import {
   IndexRoute,
   Link
 } from 'react-router';
-import Right from './Right';
+import Highscores from './Highscores';
 import GameStatusContainer from '../containers/GameStatusContainer';
 
 export default class App extends React.Component {
@@ -91,12 +91,11 @@ export default class App extends React.Component {
       <div className="app-container">
         <div className="simon">
           Simon Game!
-        <button onClick={this.startGame.bind(this)}>Start the Game!</button>
           {this.state.youLose ? <div>YOU LOSE</div> : null}
-          <ul role="nav">
-            <li><Link to="/right">Right</Link></li>
-            <li><Link to="/gamestatus">GameStatus</Link></li>
-          </ul>
+          <div role="nav" className="nav">
+            <div className="nav-item"><Link to="/gamestatus">GameStatus</Link></div>
+            <div className="nav-item"><Link to="/highscores"> Highscores</Link></div>
+          </div>
           {this.props.children && React.cloneElement(this.props.children, {
             pushPlays: this.pushPlays.bind(this),
             computerPlays: this.state.computerPlays,
