@@ -14,11 +14,27 @@
 .gameboard {
   flex: 3;
 }
+
+.italicized {
+  font-style: italic;
+}
+.nav {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: center;
+}
+
+.nav-item {
+  padding: 10px;
+}
 .show-border {
   border: 2px solid green;
 }
 .simon {
   font-size: 25px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .start-game {
