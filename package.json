@@ -6,8 +6,8 @@
   "scripts": {
     "build": "webpack --config ./webpack.config.js --progress",
     "dev": "webpack-dev-server --progress --inline --host 0.0.0.0 --port 5040 --colors --watch",
-    "start": "node server.js",
-    "start-prod": "NODE_ENV=production node server.js",
+    "start": "node index.js",
+    "start-prod": "NODE_ENV=production node index.js",
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "postinstall": "rimraf dist && webpack -p --config ./webpack.production.config.js --progress"
@@ -50,6 +50,7 @@
     "react-sizeme": "^2.3.4",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
+    "request": "^2.81.0",
     "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
     "webpack": "^1.13.2"
