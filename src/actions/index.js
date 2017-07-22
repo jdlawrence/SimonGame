@@ -4,7 +4,9 @@ export const PUSH_HUMAN_PLAY = 'PUSH_HUMAN_PLAY';
 export const END_ROUND = 'END_ROUND';
 export const CLEAR_STATE = 'CLEAR_STATE';
 export const COMPARE_PLAYS = 'COMPARE_PLAYS';
-
+export const START_FETCH = 'START_FETCH';
+export const FETCH_SCORES_SUCCESS = 'FETCH_SCORES_SUCCESS';
+export const FETCH_SCORES_FAILURE = 'FETCH_SCORES_FAILURE';
 
 export const toggleColor = (color) => {
   return {
@@ -16,8 +18,8 @@ export const toggleColor = (color) => {
 export const flashQC = (color) => {
   return function (dispatch, getState) {
     dispatch(toggleColor(color));
-    setTimeout(function() {
-      dispatch(toggleColor(color)); 
+    setTimeout(function () {
+      dispatch(toggleColor(color));
     }, 300);
   }
 }
@@ -54,6 +56,58 @@ export const endRound = () => ({
 export const clearState = () => ({
   type: CLEAR_STATE
 });
+export const startFetch = () => ({
+  type: START_FETCH
+});
+export const fetchScoresSuccess = (scores) => ({
+  type: FETCH_SCORES_SUCCESS,
+  scores
+});
+export const fetchScoresFailure = () => ({
+  type: FETCH_SCORES_FAILURE
+});
+export const fetchScores = () => dispatch => {
+  dispatch(startFetch());
+  return fetch('/api', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => response.json(),
+    error => {
+      console.log('an error occured:', error)
+      dispatch(fetchScoresFailure());
+    })
+    .then(json => {
+      dispatch(fetchScoresSuccess(json));
+    })
+};
+export const sendScore = score => dispatch => {
+  dispatch(startFetch());
+  return fetch('/api', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      Time: Date.now(),
+      score,
+      player: "J-Smooth"  
+    })
+  })
+    .then(response => response.json(),
+    error => {
+      console.log('an error occured:', error)
+      dispatch(fetchScoresFailure());
+    })
+    .then(json => {
+      dispatch(fetchScoresSuccess(json));
+    })
+};
+
 export const startGame = () => {
   return function (dispatch, getState) {
     // Reset all settings;
@@ -81,12 +135,13 @@ export const startGame = () => {
         dispatch(endRound());
 
         if (getState().gameState.youLose) {
+          dispatch(sendScore(roundCount));
           console.log('it\s over!!!: ');
         }
         else {
           gameAction();
         }
-      }, roundCount * 1000 + 5000);
+      }, roundCount * 1000 + 2000);
 
     })();
   };
