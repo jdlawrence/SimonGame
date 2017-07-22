@@ -7,7 +7,7 @@ import { Router, Route, browserHistory } from 'react-router';
 import css from './styles/style.css';
 
 import App from './components/App.js';
-import Highscores from './components/Highscores.js';
+import HighscoresContainer from './containers/HighscoresContainer.js';
 import GameStatusContainer from './containers/GameStatusContainer';
 import store, { history } from './store';
 
@@ -16,7 +16,7 @@ render(
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <Route path="/gameStatus" component={GameStatusContainer} />
-        <Route path="/highscores" component={Highscores} />
+        <Route path="/highscores" component={HighscoresContainer} />
       </Route>
     </Router>
   </Provider>,
