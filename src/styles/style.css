@@ -5,7 +5,7 @@
 .container {
   display: flex;
   color: black;
-  height: 70vh;
+  height: 100vh;
 }
 
 .controls {
@@ -13,6 +13,10 @@
 }
 .gameboard {
   flex: 3;
+  display: flex;
+   flex-direction: column; 
+  /* justify-content: center; */
+  align-items: center;
 }
 
 .italicized {
@@ -39,7 +43,7 @@
 
 .start-game {
   margin: 10px;
-  align-self: flex-end;
+  font-size: 25px;
 }
 
 .score {
