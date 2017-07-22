@@ -10,7 +10,6 @@ class GameStatus extends Component {
   }
 
   handleKey(e) {
-    console.log('handle Key pressed', e.charCode);
     switch (e.charCode) {
       case 114:
         this.props.flashQC('red');
@@ -33,7 +32,7 @@ class GameStatus extends Component {
 
   render() {
     var centerX = this.props.size.width / 2 - this.props.size.width / 5;
-    var centerY = this.props.size.height / 2;
+    var centerY = this.props.size.height * 0.3;
     let radius = 150;
     let centerMaxRadius = 160;
     let centerOuterRadius = 78;
@@ -111,13 +110,14 @@ class GameStatus extends Component {
           <div>Hit "Start Game"</div>
           <div>Use the <span className="italicized">r</span>,
           <span className="italicized"> g</span>,
-          <span className="italicized"> y</span>, and 
+          <span className="italicized"> y</span>, and
           <span className="italicized"> b </span> keys, or click the pads to match the sequence
           </div>
           <div></div>
         </div>
         <div className="gameboard show-border" >
-          <svg width="100%" height="100%">
+          <button className="start-game" onClick={this.props.startGame}>Start Game</button>
+          <svg width="100%" height="70%">
             <circle cx={centerX} cy={centerY} r={centerMaxRadius} fill="black" />
             <QuarterCircle pathData={greenData} {...this.props} />
             <QuarterCircle pathData={redData} {...this.props} />
@@ -128,13 +128,11 @@ class GameStatus extends Component {
             <path d={horizontalBar.path} stroke={horizontalBar.stroke} strokeWidth={horizontalBar.strokeWidth} />
             <circle cx={centerX} cy={centerY} r={centerInnerRadius} fill="grey" />
           </svg>
-          <button className="start-game" onClick={this.props.startGame}>Start Game!</button>
-          <div>a</div>
-          <div>b</div>
-          <div>c</div>
-          <div>d</div>
         </div>
-        <Score score={this.props.gameState.roundCount}/>
+        <Score
+          score={this.props.gameState.roundCount}
+          youLose={this.props.gameState.youLose}
+        />
       </div>
     );
   }
