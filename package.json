@@ -61,7 +61,7 @@
     "enzyme": "^2.8.2",
     "jest": "^19.0.2",
     "jest-serializer-enzyme": "^1.0.0",
-    "react-addons-test-utils": "^15.5.1",
+    "react-addons-test-utils": "^15.5.1"
   },
   "jest": {
     "snapshotSerializers": [
