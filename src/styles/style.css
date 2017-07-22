@@ -5,7 +5,7 @@
 .container {
   display: flex;
   color: black;
-  height: 70vh;
+  height: 100vh;
 }
 
 .controls {
@@ -13,17 +13,37 @@
 }
 .gameboard {
   flex: 3;
+  display: flex;
+   flex-direction: column; 
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.italicized {
+  font-style: italic;
+}
+.nav {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: center;
+}
+
+.nav-item {
+  padding: 10px;
 }
 .show-border {
   border: 2px solid green;
 }
 .simon {
   font-size: 25px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .start-game {
   margin: 10px;
-  align-self: flex-end;
+  font-size: 25px;
 }
 
 .score {
