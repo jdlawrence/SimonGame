@@ -8,8 +8,6 @@ import {
   IndexRoute,
   Link
 } from 'react-router';
-import Highscores from './Highscores';
-import GameStatusContainer from '../containers/GameStatusContainer';
 
 export default class App extends React.Component {
   constructor(props) {
