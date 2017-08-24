@@ -1,5 +1,5 @@
 const { Pool } = require('pg')
-const connectionString = 'postgres://postgres:@localhost:5432/simon_game'
+const connectionString = process.env.DATABASE_URL || 'postgres://postgres:@localhost:5432/simon_game';
 const pool = new Pool({
   connectionString
 });
