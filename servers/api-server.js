@@ -19,15 +19,16 @@ module.exports = (PORT) => {
   app.use(express.static(__dirname + '/../dist'));
 
   app.get('/api', async (req, res) => {
-    const {rows} = await db.query('SELECT * FROM scores');
+    const { rows } = await db.query('SELECT * FROM scores');
     console.log('rows', rows);
     res.send(rows);
   });
 
-  app.post('/api', (req, res) => {
-    mockData.push(req.body);
-    console.log('body', req.body, mockData);
-    res.send(mockData);
+  app.post('/api', async (req, res) => {
+    await db.query('INSERT INTO scores (player, score) VALUES ($1, $2)',
+      [req.body.player, req.body.score]);
+    const { rows } = await db.query('SELECT * FROM scores');
+    res.send(rows);
   })
 
   app.listen(PORT, () => {
