@@ -18,13 +18,16 @@ export default class Highscores extends Component {
         </div>
       );
     } else {
-      const row = this.props.dataService.scores.map((data, index) =>
-        <tr key={index}>
-          <td key={data.player}>{data.player}</td>
-          <td key={data.Time}>{data.Time}</td>
-          <td key={data.score}>{data.score}</td>
-        </tr>
-      );
+      const row = this.props.dataService.scores.map((data, index) => {
+        let date = new Date(data.timestamp).toString();
+        return (
+          <tr key={index}>
+            <td key={data.player}>{data.player}</td>
+            <td key={data.timestamp}>{date}</td>
+            <td key={data.score}>{data.score}</td>
+          </tr>
+        );
+      });
       return (
         <div>
           <table>
@@ -36,7 +39,7 @@ export default class Highscores extends Component {
               </tr>
             </thead>
             <tbody>
-            {row}
+              {row}
             </tbody>
           </table>
         </div>
