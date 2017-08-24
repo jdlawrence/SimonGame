@@ -18,7 +18,6 @@ const dataService = (state = initialState, action) => {
         isSending: true
       }
     case FETCH_SCORES_SUCCESS:
-      console.log('score', action.scores);
       return {
         ...state,
         isSending: false,
